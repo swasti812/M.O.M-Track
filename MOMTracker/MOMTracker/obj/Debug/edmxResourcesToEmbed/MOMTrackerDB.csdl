@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AGENDATABLE">
+    <Key>
+      <PropertyRef Name="AGENDAKEY" />
+    </Key>
+    <Property Name="AGENDAKEY" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AGENDA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MEETINGID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="MEETINGTABLE" Relationship="Self.FKAGENDATABLE" FromRole="AGENDATABLE" ToRole="MEETINGTABLE" />
+  </EntityType>
+  <EntityType Name="DEPARTMENTTABLE">
+    <Key>
+      <PropertyRef Name="KEY" />
+    </Key>
+    <Property Name="KEY" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DEPARTMENT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DETAILSTABLE" Relationship="Self.FKDP" FromRole="DEPARTMENTTABLE" ToRole="DETAILSTABLE" />
+  </EntityType>
+  <EntityType Name="DETAILSTABLE">
+    <Key>
+      <PropertyRef Name="UNIQUEID" />
+    </Key>
+    <Property Name="UNIQUEID" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DEPARTMENT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MOBILE" Type="Int64" />
+    <Property Name="TELEPHONE" Type="Int64" />
+    <Property Name="ROLE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DEPARTMENTTABLE" Relationship="Self.FKDP" FromRole="DETAILSTABLE" ToRole="DEPARTMENTTABLE" />
+    <NavigationProperty Name="MEETINGTABLE" Relationship="Self.FKCP" FromRole="DETAILSTABLE" ToRole="MEETINGTABLE" />
+    <NavigationProperty Name="ROLETABLE" Relationship="Self.FKROLE" FromRole="DETAILSTABLE" ToRole="ROLETABLE" />
+    <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="INVITEESTABLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MEETINGID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="INVITEEID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="MEETINGTABLE" Relationship="Self.FKMEETINVI" FromRole="INVITEESTABLE" ToRole="MEETINGTABLE" />
+  </EntityType>
+  <EntityType Name="MEETINGTABLE">
+    <Key>
+      <PropertyRef Name="MEETINGID" />
+    </Key>
+    <Property Name="MEETINGID" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MEETINGDATE" Type="DateTime" Nullable="false" />
+    <Property Name="TIME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CHAIRPERSON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AGENDATABLE" Relationship="Self.FKAGENDATABLE" FromRole="MEETINGTABLE" ToRole="AGENDATABLE" />
+    <NavigationProperty Name="DETAILSTABLE" Relationship="Self.FKCP" FromRole="MEETINGTABLE" ToRole="DETAILSTABLE" />
+    <NavigationProperty Name="INVITEESTABLE" Relationship="Self.FKMEETINVI" FromRole="MEETINGTABLE" ToRole="INVITEESTABLE" />
+  </EntityType>
+  <EntityType Name="ROLETABLE">
+    <Key>
+      <PropertyRef Name="ROLEID" />
+    </Key>
+    <Property Name="ROLEID" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROLE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DETAILSTABLE" Relationship="Self.FKROLE" FromRole="ROLETABLE" ToRole="DETAILSTABLE" />
+  </EntityType>
+  <EntityType Name="MOMDETAILS">
+    <Key>
+      <PropertyRef Name="KEY" />
+      <PropertyRef Name="EXPECTEDCLOSURE" />
+      <PropertyRef Name="RESP" />
+      <PropertyRef Name="ACTIONABLE" />
+      <PropertyRef Name="REVIEWDATE" />
+      <PropertyRef Name="ITEM" />
+    </Key>
+    <Property Name="KEY" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="STATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSREM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="EXPECTEDCLOSURE" Type="DateTime" Nullable="false" />
+    <Property Name="RESP" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ACTIONABLE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REVIEWDATE" Type="DateTime" Nullable="false" />
+    <Property Name="ITEM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FKAGENDATABLE">
+    <End Role="MEETINGTABLE" Type="Self.MEETINGTABLE" Multiplicity="1" />
+    <End Role="AGENDATABLE" Type="Self.AGENDATABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEETINGTABLE">
+        <PropertyRef Name="MEETINGID" />
+      </Principal>
+      <Dependent Role="AGENDATABLE">
+        <PropertyRef Name="MEETINGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDP">
+    <End Role="DEPARTMENTTABLE" Type="Self.DEPARTMENTTABLE" Multiplicity="1" />
+    <End Role="DETAILSTABLE" Type="Self.DETAILSTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENTTABLE">
+        <PropertyRef Name="KEY" />
+      </Principal>
+      <Dependent Role="DETAILSTABLE">
+        <PropertyRef Name="DEPARTMENT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCP">
+    <End Role="DETAILSTABLE" Type="Self.DETAILSTABLE" Multiplicity="1" />
+    <End Role="MEETINGTABLE" Type="Self.MEETINGTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DETAILSTABLE">
+        <PropertyRef Name="UNIQUEID" />
+      </Principal>
+      <Dependent Role="MEETINGTABLE">
+        <PropertyRef Name="CHAIRPERSON" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKROLE">
+    <End Role="ROLETABLE" Type="Self.ROLETABLE" Multiplicity="1" />
+    <End Role="DETAILSTABLE" Type="Self.DETAILSTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLETABLE">
+        <PropertyRef Name="ROLEID" />
+      </Principal>
+      <Dependent Role="DETAILSTABLE">
+        <PropertyRef Name="ROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKMEETINVI">
+    <End Role="MEETINGTABLE" Type="Self.MEETINGTABLE" Multiplicity="1" />
+    <End Role="INVITEESTABLE" Type="Self.INVITEESTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEETINGTABLE">
+        <PropertyRef Name="MEETINGID" />
+      </Principal>
+      <Dependent Role="INVITEESTABLE">
+        <PropertyRef Name="MEETINGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MOMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AGENDATABLE" EntityType="Self.AGENDATABLE" />
+    <EntitySet Name="DEPARTMENTTABLE" EntityType="Self.DEPARTMENTTABLE" />
+    <EntitySet Name="DETAILSTABLE" EntityType="Self.DETAILSTABLE" />
+    <EntitySet Name="INVITEESTABLE" EntityType="Self.INVITEESTABLE" />
+    <EntitySet Name="MEETINGTABLE" EntityType="Self.MEETINGTABLE" />
+    <EntitySet Name="ROLETABLE" EntityType="Self.ROLETABLE" />
+    <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" />
+    <AssociationSet Name="FKAGENDATABLE" Association="Self.FKAGENDATABLE">
+      <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
+      <End Role="AGENDATABLE" EntitySet="AGENDATABLE" />
+    </AssociationSet>
+    <AssociationSet Name="FKDP" Association="Self.FKDP">
+      <End Role="DEPARTMENTTABLE" EntitySet="DEPARTMENTTABLE" />
+      <End Role="DETAILSTABLE" EntitySet="DETAILSTABLE" />
+    </AssociationSet>
+    <AssociationSet Name="FKCP" Association="Self.FKCP">
+      <End Role="DETAILSTABLE" EntitySet="DETAILSTABLE" />
+      <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
+    </AssociationSet>
+    <AssociationSet Name="FKROLE" Association="Self.FKROLE">
+      <End Role="ROLETABLE" EntitySet="ROLETABLE" />
+      <End Role="DETAILSTABLE" EntitySet="DETAILSTABLE" />
+    </AssociationSet>
+    <AssociationSet Name="FKMEETINVI" Association="Self.FKMEETINVI">
+      <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
+      <End Role="INVITEESTABLE" EntitySet="INVITEESTABLE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
