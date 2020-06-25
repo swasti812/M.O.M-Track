@@ -24,10 +24,9 @@
     <Property Name="LASTNAME" Type="varchar2" MaxLength="50" />
     <Property Name="DEPARTMENT" Type="number" Precision="38" Scale="0" Nullable="false" />
     <Property Name="EMAIL" Type="varchar2" MaxLength="100" Nullable="false" />
-    <Property Name="MOBILE" Type="number" Precision="12" Scale="0" />
-    <Property Name="TELEPHONE" Type="number" Precision="12" Scale="0" />
+    <Property Name="MOBILE" Type="varchar2" MaxLength="20" />
+    <Property Name="TELEPHONE" Type="varchar2" MaxLength="20" />
     <Property Name="ROLE" Type="number" Precision="38" Scale="0" Nullable="false" />
-    <Property Name="PASSWORD" Type="varchar2" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="INVITEESTABLE">
     <Key>

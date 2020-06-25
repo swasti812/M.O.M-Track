@@ -21,7 +21,6 @@
     <EntitySetMapping Name="DETAILSTABLE">
       <EntityTypeMapping TypeName="Model.DETAILSTABLE">
         <MappingFragment StoreEntitySet="DETAILSTABLE">
-          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
           <ScalarProperty Name="UNIQUEID" ColumnName="UNIQUEID" />
           <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
           <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />

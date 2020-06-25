@@ -24,10 +24,9 @@ namespace MOMTracker
         public string LASTNAME { get; set; }
         public decimal DEPARTMENT { get; set; }
         public string EMAIL { get; set; }
-        public Nullable<long> MOBILE { get; set; }
-        public Nullable<long> TELEPHONE { get; set; }
+        public string MOBILE { get; set; }
+        public string TELEPHONE { get; set; }
         public decimal ROLE { get; set; }
-        public string PASSWORD { get; set; }
     
         public virtual DEPARTMENTTABLE DEPARTMENTTABLE { get; set; }
         public virtual ICollection<MEETINGTABLE> MEETINGTABLE { get; set; }

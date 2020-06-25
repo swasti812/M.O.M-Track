@@ -30,7 +30,7 @@ namespace MOMTracker
                 ChairpersonList.DataBind();
 
                 var Invitees = context.DETAILSTABLE.ToList();
-               InviteeList.DataSource = Invitees;
+                InviteeList.DataSource = Invitees;
                 InviteeList.DataTextField = "FIRSTNAME";
                 InviteeList.DataValueField = "UNIQUEID";
                 InviteeList.DataBind();
@@ -67,9 +67,24 @@ namespace MOMTracker
                 Meetagenda.AGENDA = agenda;
                 context.AGENDATABLE.Add(Meetagenda);
                 context.SaveChanges();
+                foreach (ListItem listItem in InviteeList.Items)
+                {
+                    if (listItem.Selected)
+                    {
+                        var val = listItem.Value;
+                        var txt = listItem.Text;
+                        INVITEESTABLE invite = new INVITEESTABLE();
+                        invite.MEETINGID = ID;
+                        invite.INVITEEID = Convert.ToDecimal(val);
+                        context.INVITEESTABLE.Add(invite);
+                        context.SaveChanges();
 
-             var list = InviteeList.Items;
-               // var ID= context.MEETINGTABLE.
+                    }
+                }
+
+              
+                // var list = InviteeList.SelectedValue;
+                // var ID= context.MEETINGTABLE.
             }
             catch (Exception ex)
             {

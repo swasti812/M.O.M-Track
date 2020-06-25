@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreateMeeting.aspx.cs" Inherits="MOMTracker.CreateMeeting" ValidateRequest="False" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Invitee.aspx.cs" Inherits="MOMTracker.Invitee" %>
 
 <!doctype html>
 <html>
@@ -101,6 +101,14 @@
                        M.O.M Details
                     </a>
                 </li>
+                  <li class="nav-item">
+                    <a href="" class="nav-link text-dark opt">
+                        <img src="../img/students.png" class="ml-2 mr-2 my-auto" style="width: 16px" />
+                        <!-- <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+    -->
+                      Add Invitee
+                    </a>
+                </li>
               
             <li class="nav-item mx-5">
                <%-- @if (User.Identity.IsAuthenticated)
@@ -132,77 +140,66 @@
 
                             <div class="form-group">
                        
-                                <asp:Label ID="Label1" runat="server" class="control label col-md-2" Text="Meeting Date"></asp:Label>  
+                                <asp:Label ID="Label1" runat="server" class="control label col-md-2" Text=" First Name"></asp:Label>  
                                 <div class="col-md-10">
-                                    <asp:TextBox ID="TextBox" runat="server" class="form-control" placeholder="Date" Textmode="Date" width="150px"></asp:TextBox>  
+                                    <asp:TextBox ID="TextBox" runat="server" class="form-control"   width="300px"></asp:TextBox>  
                                  
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                    <asp:Label ID="Label2" runat="server" class="control label col-md-2" Text="Meeting Time"></asp:Label> 
+                                    <asp:Label ID="Label2" runat="server" class="control label col-md-2" Text="Last Name"></asp:Label> 
                                     <div class="col-md-10">
                                       
-                                         <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Time" Textmode="Time" width="150px" ></asp:TextBox> 
+                                         <asp:TextBox ID="TextBox1" runat="server" class="form-control"  width="300px" ></asp:TextBox> 
                                     </div>
                                 </div>
                             <div class="form-group">
-                                 <asp:Label ID="Label3" runat="server" class="control label col-md-2" Text="Chairperson"  ></asp:Label> 
+                                 <asp:Label ID="Label3" runat="server" class="control label col-md-2" Text="Department"  ></asp:Label> 
                                 <div class="col-md-10">
                                     
                                
-                                    <asp:DropDownList id="ChairpersonList" runat="server" CssClass="dropdown form-control" Width="150px" >
+                                    <asp:DropDownList id="DepList" runat="server" CssClass="dropdown form-control" Width="300px" >
+                            <asp:ListItem Text="----SELECT----" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                 <asp:Label ID="Label7" runat="server" class="control label col-md-2" Text="Role"  ></asp:Label> 
+                                <div class="col-md-10">
+                                    
+                               
+                                    <asp:DropDownList id="Rolelist" runat="server" CssClass="dropdown form-control" Width="300px" >
                             <asp:ListItem Text="----SELECT----" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
 
                             </div>
                              <div class="form-group">
-                                <asp:Label ID="Label6" runat="server" class="control label col-md-2" Text="Invitees"></asp:Label>
+                                <asp:Label ID="Label6" runat="server" class="control label col-md-2" Text="Email"></asp:Label>
                                 <div class="col-md-10">
-                                    <%--<asp:checkboxlist runat="server" ID="InviteeList" class="listbox" Width="300px" SelectionMode="Multiple" ></asp:checkboxlist>--%>
-                                   <asp:ListBox runat="server" ID="InviteeList" class="listbox" width="300px" SelectionMode="Multiple"> </asp:ListBox>
-                                    <%--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css"
-              rel="stylesheet" type="text/css" >
-       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <link href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
-        <script src="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(function () {
-                $('.listbox').multiselect({
-                   includeSelectAllOption: true
-               });
-            });
-        </script>--%>
-                                    
-                                 <%--  <%-- <asp:<%--DropDownListChosen--%> <%--ID="DropDownListChosen1" runat="server" 
-            NoResultsText="No results match." width="350px"            
-            DataPlaceHolder="Type Here..." AllowSingleDeselect="true">--%<%--></asp:DropDownListChosen--%>        
+                                     <asp:TextBox ID="TextBox2" runat="server" class="form-control" Textmode="Email"  width="300px" ></asp:TextBox> 
          
                                     </div>
                                 </div>
 
                            
                             <div class="form-group">
-                                <asp:Label ID="Label4" runat="server" class="control label col-md-2" Text="Agenda"></asp:Label>
+                                <asp:Label ID="Label4" runat="server" class="control label col-md-2" Text="Mobile No"></asp:Label>
                                 <div class="col-md-10">
-                                    <asp:TextBox ID="txtTinyMCE" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:TextBox ID="txtTinyMCE" runat="server" CssClass="form-control" TextMode="Phone"></asp:TextBox>
                                     <%--asp:TextBox ID="TextBox3" runat="server" TextMode="MultiLine"></asp:TextBox>--%>
-<asp:Label ID="lblContent" runat="server"></asp:Label>
-<script type="text/javascript" src="https://tinymce.cachefly.net/4.0/tinymce.min.js"></script>
-<script type="text/javascript">
-    tinymce.init({ selector: 'textarea', width: 500 });
-</script>
+
                                 
                                 </div>
                             </div>
                        
                             
                             <div class="form-group">
-                                <asp:Label ID="Label5" runat="server" class="control label col-md-2" Text="Title"></asp:Label>
+                                <asp:Label ID="Label5" runat="server" class="control label col-md-2" Text="Telephone"></asp:Label>
                                 <div class="col-md-10">
-                                    <asp:TextBox ID="TextBox3" runat="server" ></asp:TextBox>
+                                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" Textmode="Phone"></asp:TextBox>
                                     </div>
                                 </div>
 

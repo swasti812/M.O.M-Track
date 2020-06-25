@@ -29,10 +29,9 @@
           <Property Name="LASTNAME" Type="varchar2" MaxLength="50" />
           <Property Name="DEPARTMENT" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="EMAIL" Type="varchar2" MaxLength="100" Nullable="false" />
-          <Property Name="MOBILE" Type="number" Precision="12" Scale="0" />
-          <Property Name="TELEPHONE" Type="number" Precision="12" Scale="0" />
+          <Property Name="MOBILE" Type="varchar2" MaxLength="20" />
+          <Property Name="TELEPHONE" Type="varchar2" MaxLength="20" />
           <Property Name="ROLE" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PASSWORD" Type="varchar2" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="INVITEESTABLE">
           <Key>
@@ -209,13 +208,12 @@ FROM "C##SWASTI"."MOMDETAILS" "MOMDETAILS"</DefiningQuery>
           <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DEPARTMENT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MOBILE" Type="Int64" />
-          <Property Name="TELEPHONE" Type="Int64" />
+          <Property Name="MOBILE" Type="String" />
+          <Property Name="TELEPHONE" Type="String" />
           <Property Name="ROLE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="DEPARTMENTTABLE" Relationship="Self.FKDP" FromRole="DETAILSTABLE" ToRole="DEPARTMENTTABLE" />
           <NavigationProperty Name="MEETINGTABLE" Relationship="Self.FKCP" FromRole="DETAILSTABLE" ToRole="MEETINGTABLE" />
           <NavigationProperty Name="ROLETABLE" Relationship="Self.FKROLE" FromRole="DETAILSTABLE" ToRole="ROLETABLE" />
-          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="INVITEESTABLE">
           <Key>
@@ -380,7 +378,6 @@ FROM "C##SWASTI"."MOMDETAILS" "MOMDETAILS"</DefiningQuery>
           <EntitySetMapping Name="DETAILSTABLE">
             <EntityTypeMapping TypeName="Model.DETAILSTABLE">
               <MappingFragment StoreEntitySet="DETAILSTABLE">
-                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="UNIQUEID" ColumnName="UNIQUEID" />
                 <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
                 <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />

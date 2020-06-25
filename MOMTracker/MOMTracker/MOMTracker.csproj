@@ -136,6 +136,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Home.aspx" />
+    <Content Include="Invitee.aspx" />
     <Content Include="MOMTrackerDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MOMTrackerDB.Context.cs</LastGenOutput>
@@ -225,6 +226,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Invitee.aspx.cs">
+      <DependentUpon>Invitee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Invitee.aspx.designer.cs">
+      <DependentUpon>Invitee.aspx</DependentUpon>
     </Compile>
     <Compile Include="INVITEESTABLE.cs">
       <DependentUpon>MOMTrackerDB.tt</DependentUpon>
