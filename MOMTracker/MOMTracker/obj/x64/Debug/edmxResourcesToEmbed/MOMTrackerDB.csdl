@@ -16,6 +16,7 @@
     <Property Name="KEY" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DEPARTMENT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="DETAILSTABLE" Relationship="Self.FKDP" FromRole="DEPARTMENTTABLE" ToRole="DETAILSTABLE" />
+    <NavigationProperty Name="MEMBERTABLE" Relationship="Model.DEP" FromRole="DEPARTMENTTABLE" ToRole="MEMBERTABLE" />
   </EntityType>
   <EntityType Name="DETAILSTABLE">
     <Key>
@@ -151,6 +152,11 @@
       <End Role="INVITEESTABLE" EntitySet="INVITEESTABLE" />
     </AssociationSet>
     <EntitySet Name="MOMDETAILS" EntityType="Model.MOMDETAILS" />
+    <EntitySet Name="MEMBERTABLE" EntityType="Model.MEMBERTABLE" />
+    <AssociationSet Name="DEP" Association="Model.DEP">
+      <End Role="DEPARTMENTTABLE" EntitySet="DEPARTMENTTABLE" />
+      <End Role="MEMBERTABLE" EntitySet="MEMBERTABLE" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="MOMDETAILS">
     <Key>
@@ -165,4 +171,30 @@
     <Property Name="REVIEWDATE" Type="DateTime" Nullable="false" />
     <Property Name="ITEM" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="MEMBERTABLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIRSTNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MOBILE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TELEPHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DEPARTMENT" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <NavigationProperty Name="DEPARTMENTTABLE" Relationship="Model.DEP" FromRole="MEMBERTABLE" ToRole="DEPARTMENTTABLE" />
+    <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="DEP">
+    <End Type="Model.DEPARTMENTTABLE" Role="DEPARTMENTTABLE" Multiplicity="1" />
+    <End Type="Model.MEMBERTABLE" Role="MEMBERTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENTTABLE">
+        <PropertyRef Name="KEY" />
+      </Principal>
+      <Dependent Role="MEMBERTABLE">
+        <PropertyRef Name="DEPARTMENT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

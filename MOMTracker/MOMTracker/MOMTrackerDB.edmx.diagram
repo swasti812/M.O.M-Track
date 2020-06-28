@@ -17,6 +17,8 @@
         <AssociationConnector Association="Model.FKROLE" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FKMEETINVI" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Model.MOMDETAILS" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.MEMBERTABLE" Width="1.5" PointX="3" PointY="7.375" />
+        <AssociationConnector Association="Model.DEP" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

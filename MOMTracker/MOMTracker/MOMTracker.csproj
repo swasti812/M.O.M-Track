@@ -248,6 +248,9 @@
     <Compile Include="MEETINGTABLE.cs">
       <DependentUpon>MOMTrackerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="MEMBERTABLE.cs">
+      <DependentUpon>MOMTrackerDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="MOMDETAILS.cs">
       <DependentUpon>MOMTrackerDB.tt</DependentUpon>
     </Compile>
@@ -380,16 +383,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51638</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44342/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

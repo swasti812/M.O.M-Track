@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
@@ -24,14 +25,19 @@ namespace MOMTracker
                 var origin = context.DETAILSTABLE.Where(s=> s.ROLE==ID.ROLEID).ToList();
                 origin = origin.OrderBy(c => c.FIRSTNAME).ToList();
                 
+                DataSet o = new DataSet();
                 ChairpersonList.DataSource = origin;
-                ChairpersonList.DataTextField = "FIRSTNAME";
+                
+              
+                ChairpersonList.DataTextField = "NAMEANDDESCRIPTION" ;
+
+
                 ChairpersonList.DataValueField = "UNIQUEID";
                 ChairpersonList.DataBind();
 
                 var Invitees = context.DETAILSTABLE.ToList();
                 InviteeList.DataSource = Invitees;
-                InviteeList.DataTextField = "FIRSTNAME";
+                InviteeList.DataTextField = "NAMEANDDESCRIPTION";
                 InviteeList.DataValueField = "UNIQUEID";
                 InviteeList.DataBind();
             }

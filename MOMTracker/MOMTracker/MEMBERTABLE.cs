@@ -12,18 +12,17 @@ namespace MOMTracker
     using System;
     using System.Collections.Generic;
     
-    public partial class DEPARTMENTTABLE
+    public partial class MEMBERTABLE
     {
-        public DEPARTMENTTABLE()
-        {
-            this.DETAILSTABLE = new HashSet<DETAILSTABLE>();
-            this.MEMBERTABLE = new HashSet<MEMBERTABLE>();
-        }
+        public decimal ID { get; set; }
+        public string FIRSTNAME { get; set; }
+        public string LASTNAME { get; set; }
+        public string EMAIL { get; set; }
+        public string MOBILE { get; set; }
+        public string TELEPHONE { get; set; }
+        public decimal DEPARTMENT { get; set; }
+        public string PASSWORD { get; set; }
     
-        public decimal KEY { get; set; }
-        public string DEPARTMENT { get; set; }
-    
-        public virtual ICollection<DETAILSTABLE> DETAILSTABLE { get; set; }
-        public virtual ICollection<MEMBERTABLE> MEMBERTABLE { get; set; }
+        public virtual DEPARTMENTTABLE DEPARTMENTTABLE { get; set; }
     }
 }

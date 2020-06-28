@@ -49,11 +49,21 @@
 
                     
                     <div class="form-group row" style="padding-top:175px">
-                         <asp:Label ID="Label1" runat="server" class="col-sm-5 col-form-label" Text="Name"></asp:Label>  
+                         <asp:Label ID="Label1" runat="server" class="col-sm-5 col-form-label" Text="First Name"></asp:Label>  
                       
                        
                         <div class="col-sm-7">
                            <asp:TextBox ID="TextBox1" runat="server" class="form-control" ></asp:TextBox> 
+                        
+                           
+                        </div>
+                    </div>
+                     <div class="form-group row" >
+                         <asp:Label ID="Label6" runat="server" class="col-sm-5 col-form-label" Text="Last Name"></asp:Label>  
+                      
+                       
+                        <div class="col-sm-7">
+                           <asp:TextBox ID="TextBox6" runat="server" class="form-control" ></asp:TextBox> 
                         
                            
                         </div>
@@ -67,19 +77,26 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                      <asp:Label ID="Label3" runat="server" class="col-sm-5 col-form-label" Text="Contact No" ></asp:Label>  
+                      <asp:Label ID="Label3" runat="server" class="col-sm-5 col-form-label" Text="Mobile No" ></asp:Label>  
                         <div class="col-sm-7">
-                            <asp:TextBox ID="TextBox3" runat="server" class="form-control" Textmode="Phone"  ></asp:TextBox> 
+                            <asp:TextBox ID="TextBox3" runat="server" class="form-control"   ></asp:TextBox> 
                         </div>
                     </div>
                     <div class="form-group row">
-                       <asp:Label ID="Label4" runat="server" class="col-sm-5 col-form-label" Text="Department" ></asp:Label>  
+                      <asp:Label ID="Label7" runat="server" class="col-sm-5 col-form-label" Text="Telephone" ></asp:Label>  
                         <div class="col-sm-7">
-                            <asp:TextBox ID="TextBox4" runat="server" class="form-control"   ></asp:TextBox> 
+                            <asp:TextBox ID="TextBox4" runat="server" class="form-control"  ></asp:TextBox> 
                         </div>
                     </div>
+
                     <div class="form-group row">
-                        <asp:Label ID="Label5" runat="server" class="col-sm-5 col-form-label" Text="Password :"></asp:Label>
+                        <asp:Label ID="Label4" runat="server" class="col-sm-5 col-form-label" Text="Department" ></asp:Label>  
+                       <asp:dropdownlist ID="DepList" runat="server" CssClass="dropdown form control" >
+                         <asp:ListItem Text="----SELECT----" Value="0"></asp:ListItem>
+                        </asp:dropdownlist>  
+                    </div>
+                    <div class="form-group row">
+                        <asp:Label ID="Label5" runat="server" class="col-sm-5 col-form-label" Text="Password"></asp:Label>
                         <div class="col-sm-7">
                              <asp:TextBox ID="TextBox5" runat="server" class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox> 
                         </div>
@@ -109,7 +126,7 @@
         </div>*@--%>
                     <div class="form-group row">
                         <div class="col-sm-12" >
-                            <input type="submit" value="CONTINUE" id="btn" onclick="signup()"/>
+                           <asp:Button ID="btn" runat="server" BorderStyle="None" Font-Size="X-Large" OnClick="btn_Click" Text="Sign Up" />  
                         </div>
                     </div>
                    

@@ -151,7 +151,7 @@
                                 <div class="col-md-10">
                                     
                                
-                                    <asp:DropDownList id="ChairpersonList" runat="server" CssClass="dropdown form-control" Width="150px" >
+                                    <asp:DropDownList id="ChairpersonList" runat="server" CssClass="dropdown form-control"  Width="150px" >
                             <asp:ListItem Text="----SELECT----" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>

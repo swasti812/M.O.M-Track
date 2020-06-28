@@ -46,6 +46,19 @@
     <Property Name="CHAIRPERSON" Type="number" Precision="38" Scale="0" Nullable="false" />
     <Property Name="TITLE" Type="varchar2" MaxLength="100" Nullable="false" />
   </EntityType>
+  <EntityType Name="MEMBERTABLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIRSTNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="LASTNAME" Type="varchar2" MaxLength="20" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="MOBILE" Type="varchar2" MaxLength="20" />
+    <Property Name="TELEPHONE" Type="varchar2" MaxLength="20" />
+    <Property Name="DEPARTMENT" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
   <EntityType Name="MOMDETAILS">
     <Key>
       <PropertyRef Name="KEY" />
@@ -66,6 +79,18 @@
     <Property Name="ROLEID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ROLE" Type="varchar2" MaxLength="20" Nullable="false" />
   </EntityType>
+  <Association Name="DEP">
+    <End Role="DEPARTMENTTABLE" Type="Self.DEPARTMENTTABLE" Multiplicity="1" />
+    <End Role="MEMBERTABLE" Type="Self.MEMBERTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENTTABLE">
+        <PropertyRef Name="KEY" />
+      </Principal>
+      <Dependent Role="MEMBERTABLE">
+        <PropertyRef Name="DEPARTMENT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FKAGENDATABLE">
     <End Role="MEETINGTABLE" Type="Self.MEETINGTABLE" Multiplicity="1" />
     <End Role="AGENDATABLE" Type="Self.AGENDATABLE" Multiplicity="*" />
@@ -132,8 +157,13 @@
     <EntitySet Name="DETAILSTABLE" EntityType="Self.DETAILSTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="INVITEESTABLE" EntityType="Self.INVITEESTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="MEETINGTABLE" EntityType="Self.MEETINGTABLE" Schema="C##SWASTI" store:Type="Tables" />
+    <EntitySet Name="MEMBERTABLE" EntityType="Self.MEMBERTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="ROLETABLE" EntityType="Self.ROLETABLE" Schema="C##SWASTI" store:Type="Tables" />
+    <AssociationSet Name="DEP" Association="Self.DEP">
+      <End Role="DEPARTMENTTABLE" EntitySet="DEPARTMENTTABLE" />
+      <End Role="MEMBERTABLE" EntitySet="MEMBERTABLE" />
+    </AssociationSet>
     <AssociationSet Name="FKAGENDATABLE" Association="Self.FKAGENDATABLE">
       <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
       <End Role="AGENDATABLE" EntitySet="AGENDATABLE" />
