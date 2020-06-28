@@ -12,15 +12,43 @@ namespace MOMTracker
         protected void Page_Load(object sender, EventArgs e)
         {
             var context = new MOMEntities();
-            var list = context.MOMDETAILS.SqlQuery("Select * from MOMDETAILS");
-            //meetlist.DataSource = list;
-            //meetlist.DataBind();
+            // var list = from u in MEETINGTABLE sel
+            var list = context.MEETINGTABLE.Where(x => x.MEETINGID <= 25).ToList();
+
+
+            Meetlist.DataSource = list;
+           
+            Meetlist.DataBind();
+            //var X=  Meetlist.DataKeys;
 
         }
 
         protected void btn_Click(object sender, EventArgs e)
         {
             //Response.RedirectToRoute();
+        }
+
+        protected void Meetlist_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //this.Meetlist.Columns[0].Visible = false;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(this.Meetlist, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["style"] = "cursor:pointer";
+                e.Row.Attributes["onmouseover"] = "this.style.cursor='pointer';this.style.textDecoration='underline';";
+                e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';";
+                e.Row.ToolTip = "select row";
+            }
+
+        }
+
+        protected void Meetlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           // var id = Meetlist.SelectedDataKey;
+           string id1 = Meetlist.SelectedRow.Cells[3].Text;
+            Response.Redirect("Details.aspx?identifier="+id1);
+            // Response.Redirect("Details.aspx?ID=" + id);
+
         }
     }
 }

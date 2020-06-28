@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="MOMEntities">
+    <EntitySetMapping Name="AGENDATABLE">
+      <EntityTypeMapping TypeName="Model.AGENDATABLE">
+        <MappingFragment StoreEntitySet="AGENDATABLE">
+          <ScalarProperty Name="AGENDAKEY" ColumnName="AGENDAKEY" />
+          <ScalarProperty Name="AGENDA" ColumnName="AGENDA" />
+          <ScalarProperty Name="MEETINGID" ColumnName="MEETINGID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTMENTTABLE">
+      <EntityTypeMapping TypeName="Model.DEPARTMENTTABLE">
+        <MappingFragment StoreEntitySet="DEPARTMENTTABLE">
+          <ScalarProperty Name="KEY" ColumnName="KEY" />
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETAILSTABLE">
+      <EntityTypeMapping TypeName="Model.DETAILSTABLE">
+        <MappingFragment StoreEntitySet="DETAILSTABLE">
+          <ScalarProperty Name="UNIQUEID" ColumnName="UNIQUEID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+          <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INVITEESTABLE">
+      <EntityTypeMapping TypeName="Model.INVITEESTABLE">
+        <MappingFragment StoreEntitySet="INVITEESTABLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MEETINGID" ColumnName="MEETINGID" />
+          <ScalarProperty Name="INVITEEID" ColumnName="INVITEEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEETINGTABLE">
+      <EntityTypeMapping TypeName="Model.MEETINGTABLE">
+        <MappingFragment StoreEntitySet="MEETINGTABLE">
+          <ScalarProperty Name="MEETINGID" ColumnName="MEETINGID" />
+          <ScalarProperty Name="MEETINGDATE" ColumnName="MEETINGDATE" />
+          <ScalarProperty Name="TIME" ColumnName="TIME" />
+          <ScalarProperty Name="CHAIRPERSON" ColumnName="CHAIRPERSON" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLETABLE">
+      <EntityTypeMapping TypeName="Model.ROLETABLE">
+        <MappingFragment StoreEntitySet="ROLETABLE">
+          <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+          <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MOMDETAILS">
+      <EntityTypeMapping TypeName="Model.MOMDETAILS">
+        <MappingFragment StoreEntitySet="MOMDETAILS">
+          <ScalarProperty Name="KEY" ColumnName="KEY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="STATUSREM" ColumnName="STATUSREM" />
+          <ScalarProperty Name="EXPECTEDCLOSURE" ColumnName="EXPECTEDCLOSURE" />
+          <ScalarProperty Name="RESP" ColumnName="RESP" />
+          <ScalarProperty Name="ACTIONABLE" ColumnName="ACTIONABLE" />
+          <ScalarProperty Name="REVIEWDATE" ColumnName="REVIEWDATE" />
+          <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

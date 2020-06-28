@@ -11,12 +11,12 @@
         <EntityTypeShape EntityType="Model.INVITEESTABLE" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.MEETINGTABLE" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.ROLETABLE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MOMDETAILS" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
         <AssociationConnector Association="Model.FKAGENDATABLE" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FKDP" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FKCP" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FKROLE" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FKMEETINVI" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.MOMDETAILS" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

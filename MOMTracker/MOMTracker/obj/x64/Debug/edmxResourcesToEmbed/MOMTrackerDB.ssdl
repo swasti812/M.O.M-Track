@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AGENDATABLE">
+    <Key>
+      <PropertyRef Name="AGENDAKEY" />
+    </Key>
+    <Property Name="AGENDAKEY" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AGENDA" Type="varchar2" MaxLength="500" Nullable="false" />
+    <Property Name="MEETINGID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DEPARTMENTTABLE">
+    <Key>
+      <PropertyRef Name="KEY" />
+    </Key>
+    <Property Name="KEY" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DEPARTMENT" Type="varchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DETAILSTABLE">
+    <Key>
+      <PropertyRef Name="UNIQUEID" />
+    </Key>
+    <Property Name="UNIQUEID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIRSTNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="LASTNAME" Type="varchar2" MaxLength="50" />
+    <Property Name="DEPARTMENT" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="MOBILE" Type="varchar2" MaxLength="20" />
+    <Property Name="TELEPHONE" Type="varchar2" MaxLength="20" />
+    <Property Name="ROLE" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="INVITEESTABLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MEETINGID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="INVITEEID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MEETINGTABLE">
+    <Key>
+      <PropertyRef Name="MEETINGID" />
+    </Key>
+    <Property Name="MEETINGID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MEETINGDATE" Type="date" Nullable="false" />
+    <Property Name="TIME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="CHAIRPERSON" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TITLE" Type="varchar2" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MOMDETAILS">
+    <Key>
+      <PropertyRef Name="KEY" />
+    </Key>
+    <Property Name="KEY" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STATUS" Type="varchar2" MaxLength="500" />
+    <Property Name="STATUSREM" Type="varchar2" MaxLength="500" />
+    <Property Name="EXPECTEDCLOSURE" Type="date" Nullable="false" />
+    <Property Name="RESP" Type="long" Nullable="false" />
+    <Property Name="ACTIONABLE" Type="varchar2" MaxLength="500" Nullable="false" />
+    <Property Name="REVIEWDATE" Type="date" Nullable="false" />
+    <Property Name="ITEM" Type="varchar2" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROLETABLE">
+    <Key>
+      <PropertyRef Name="ROLEID" />
+    </Key>
+    <Property Name="ROLEID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ROLE" Type="varchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FKAGENDATABLE">
+    <End Role="MEETINGTABLE" Type="Self.MEETINGTABLE" Multiplicity="1" />
+    <End Role="AGENDATABLE" Type="Self.AGENDATABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEETINGTABLE">
+        <PropertyRef Name="MEETINGID" />
+      </Principal>
+      <Dependent Role="AGENDATABLE">
+        <PropertyRef Name="MEETINGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCP">
+    <End Role="DETAILSTABLE" Type="Self.DETAILSTABLE" Multiplicity="1" />
+    <End Role="MEETINGTABLE" Type="Self.MEETINGTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DETAILSTABLE">
+        <PropertyRef Name="UNIQUEID" />
+      </Principal>
+      <Dependent Role="MEETINGTABLE">
+        <PropertyRef Name="CHAIRPERSON" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKDP">
+    <End Role="DEPARTMENTTABLE" Type="Self.DEPARTMENTTABLE" Multiplicity="1" />
+    <End Role="DETAILSTABLE" Type="Self.DETAILSTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENTTABLE">
+        <PropertyRef Name="KEY" />
+      </Principal>
+      <Dependent Role="DETAILSTABLE">
+        <PropertyRef Name="DEPARTMENT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKMEETINVI">
+    <End Role="MEETINGTABLE" Type="Self.MEETINGTABLE" Multiplicity="1" />
+    <End Role="INVITEESTABLE" Type="Self.INVITEESTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEETINGTABLE">
+        <PropertyRef Name="MEETINGID" />
+      </Principal>
+      <Dependent Role="INVITEESTABLE">
+        <PropertyRef Name="MEETINGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKROLE">
+    <End Role="ROLETABLE" Type="Self.ROLETABLE" Multiplicity="1" />
+    <End Role="DETAILSTABLE" Type="Self.DETAILSTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLETABLE">
+        <PropertyRef Name="ROLEID" />
+      </Principal>
+      <Dependent Role="DETAILSTABLE">
+        <PropertyRef Name="ROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="AGENDATABLE" EntityType="Self.AGENDATABLE" Schema="C##SWASTI" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENTTABLE" EntityType="Self.DEPARTMENTTABLE" Schema="C##SWASTI" store:Type="Tables" />
+    <EntitySet Name="DETAILSTABLE" EntityType="Self.DETAILSTABLE" Schema="C##SWASTI" store:Type="Tables" />
+    <EntitySet Name="INVITEESTABLE" EntityType="Self.INVITEESTABLE" Schema="C##SWASTI" store:Type="Tables" />
+    <EntitySet Name="MEETINGTABLE" EntityType="Self.MEETINGTABLE" Schema="C##SWASTI" store:Type="Tables" />
+    <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" Schema="C##SWASTI" store:Type="Tables" />
+    <EntitySet Name="ROLETABLE" EntityType="Self.ROLETABLE" Schema="C##SWASTI" store:Type="Tables" />
+    <AssociationSet Name="FKAGENDATABLE" Association="Self.FKAGENDATABLE">
+      <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
+      <End Role="AGENDATABLE" EntitySet="AGENDATABLE" />
+    </AssociationSet>
+    <AssociationSet Name="FKCP" Association="Self.FKCP">
+      <End Role="DETAILSTABLE" EntitySet="DETAILSTABLE" />
+      <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
+    </AssociationSet>
+    <AssociationSet Name="FKDP" Association="Self.FKDP">
+      <End Role="DEPARTMENTTABLE" EntitySet="DEPARTMENTTABLE" />
+      <End Role="DETAILSTABLE" EntitySet="DETAILSTABLE" />
+    </AssociationSet>
+    <AssociationSet Name="FKMEETINVI" Association="Self.FKMEETINVI">
+      <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
+      <End Role="INVITEESTABLE" EntitySet="INVITEESTABLE" />
+    </AssociationSet>
+    <AssociationSet Name="FKROLE" Association="Self.FKROLE">
+      <End Role="ROLETABLE" EntitySet="ROLETABLE" />
+      <End Role="DETAILSTABLE" EntitySet="DETAILSTABLE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

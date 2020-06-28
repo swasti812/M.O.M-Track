@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="MOMTracker.Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="MOMTracker.Home" EnableEventValidation="false"  %>
 
 <!doctype html>
 <html>
@@ -32,6 +32,8 @@
     width: 100%;
   }
 }
+        .hiddencol { display: none; }
+
     </style>
     <script>
         $(function () {
@@ -119,10 +121,18 @@
         </div>
         <div class="row pt-5">
             <div class="col-lg-12">
-                <form runat="server">
-
-               
-                <asp:GridView ID="meetlist" runat="server" class="bg-white"></asp:GridView>
+                <form runat="server" onload="Page_Load">
+                    
+                <asp:GridView ID="Meetlist" AutoGenerateColumns="false" class="bg-white" runat="server" Width="900px" BackColor="white" BorderWidth="0px" ForeColor="Black" CellPadding="10" GridLines="None" OnRowDataBound="Meetlist_RowDataBound"  OnSelectedIndexChanged="Meetlist_SelectedIndexChanged" OnLoad="Page_Load" SelectedRowStyle-BackColor="#cccccc"  > 
+                    
+                    <Columns >
+                    <asp:BoundField  HeaderText="Date" DataField="MEETINGDATE" />  
+                    <asp:BoundField HeaderText="Time" DataField="TIME" />  
+                    <asp:BoundField HeaderText="Title" DataField="TITLE" />
+                    <asp:BoundField DataField="MEETINGID" HeaderText="MEETINGIDID" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"  />
+                    
+                    </Columns>
+                </asp:GridView>
                     </form>
                 
               

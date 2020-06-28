@@ -51,16 +51,9 @@
           <Property Name="CHAIRPERSON" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TITLE" Type="varchar2" MaxLength="100" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C##SWASTI.MOMDETAILS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MOMDETAILS">
           <Key>
             <PropertyRef Name="KEY" />
-            <PropertyRef Name="EXPECTEDCLOSURE" />
-            <PropertyRef Name="RESP" />
-            <PropertyRef Name="ACTIONABLE" />
-            <PropertyRef Name="REVIEWDATE" />
-            <PropertyRef Name="ITEM" />
           </Key>
           <Property Name="KEY" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="STATUS" Type="varchar2" MaxLength="500" />
@@ -144,19 +137,8 @@ warning 6002: The table/view 'C##SWASTI.MOMDETAILS' does not have a primary key 
           <EntitySet Name="DETAILSTABLE" EntityType="Self.DETAILSTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="INVITEESTABLE" EntityType="Self.INVITEESTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="MEETINGTABLE" EntityType="Self.MEETINGTABLE" Schema="C##SWASTI" store:Type="Tables" />
+          <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="ROLETABLE" EntityType="Self.ROLETABLE" Schema="C##SWASTI" store:Type="Tables" />
-          <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" store:Type="Tables" store:Schema="C##SWASTI">
-            <DefiningQuery>SELECT 
-"MOMDETAILS"."KEY" AS "KEY", 
-"MOMDETAILS"."STATUS" AS "STATUS", 
-"MOMDETAILS"."STATUSREM" AS "STATUSREM", 
-"MOMDETAILS"."EXPECTEDCLOSURE" AS "EXPECTEDCLOSURE", 
-"MOMDETAILS"."RESP" AS "RESP", 
-"MOMDETAILS"."ACTIONABLE" AS "ACTIONABLE", 
-"MOMDETAILS"."REVIEWDATE" AS "REVIEWDATE", 
-"MOMDETAILS"."ITEM" AS "ITEM"
-FROM "C##SWASTI"."MOMDETAILS" "MOMDETAILS"</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FKAGENDATABLE" Association="Self.FKAGENDATABLE">
             <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
             <End Role="AGENDATABLE" EntitySet="AGENDATABLE" />
@@ -245,24 +227,6 @@ FROM "C##SWASTI"."MOMDETAILS" "MOMDETAILS"</DefiningQuery>
           <Property Name="ROLE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="DETAILSTABLE" Relationship="Self.FKROLE" FromRole="ROLETABLE" ToRole="DETAILSTABLE" />
         </EntityType>
-        <EntityType Name="MOMDETAILS">
-          <Key>
-            <PropertyRef Name="KEY" />
-            <PropertyRef Name="EXPECTEDCLOSURE" />
-            <PropertyRef Name="RESP" />
-            <PropertyRef Name="ACTIONABLE" />
-            <PropertyRef Name="REVIEWDATE" />
-            <PropertyRef Name="ITEM" />
-          </Key>
-          <Property Name="KEY" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="STATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="STATUSREM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="EXPECTEDCLOSURE" Type="DateTime" Nullable="false" />
-          <Property Name="RESP" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACTIONABLE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="REVIEWDATE" Type="DateTime" Nullable="false" />
-          <Property Name="ITEM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <Association Name="FKAGENDATABLE">
           <End Role="MEETINGTABLE" Type="Self.MEETINGTABLE" Multiplicity="1" />
           <End Role="AGENDATABLE" Type="Self.AGENDATABLE" Multiplicity="*" />
@@ -330,7 +294,6 @@ FROM "C##SWASTI"."MOMDETAILS" "MOMDETAILS"</DefiningQuery>
           <EntitySet Name="INVITEESTABLE" EntityType="Self.INVITEESTABLE" />
           <EntitySet Name="MEETINGTABLE" EntityType="Self.MEETINGTABLE" />
           <EntitySet Name="ROLETABLE" EntityType="Self.ROLETABLE" />
-          <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" />
           <AssociationSet Name="FKAGENDATABLE" Association="Self.FKAGENDATABLE">
             <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
             <End Role="AGENDATABLE" EntitySet="AGENDATABLE" />
@@ -351,7 +314,21 @@ FROM "C##SWASTI"."MOMDETAILS" "MOMDETAILS"</DefiningQuery>
             <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
             <End Role="INVITEESTABLE" EntitySet="INVITEESTABLE" />
           </AssociationSet>
+          <EntitySet Name="MOMDETAILS" EntityType="Model.MOMDETAILS" />
         </EntityContainer>
+        <EntityType Name="MOMDETAILS">
+          <Key>
+            <PropertyRef Name="KEY" />
+          </Key>
+          <Property Name="KEY" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="STATUSREM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EXPECTEDCLOSURE" Type="DateTime" Nullable="false" />
+          <Property Name="RESP" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIONABLE" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="REVIEWDATE" Type="DateTime" Nullable="false" />
+          <Property Name="ITEM" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -420,14 +397,14 @@ FROM "C##SWASTI"."MOMDETAILS" "MOMDETAILS"</DefiningQuery>
           <EntitySetMapping Name="MOMDETAILS">
             <EntityTypeMapping TypeName="Model.MOMDETAILS">
               <MappingFragment StoreEntitySet="MOMDETAILS">
-                <ScalarProperty Name="KEY" ColumnName="KEY" />
-                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-                <ScalarProperty Name="STATUSREM" ColumnName="STATUSREM" />
-                <ScalarProperty Name="EXPECTEDCLOSURE" ColumnName="EXPECTEDCLOSURE" />
-                <ScalarProperty Name="RESP" ColumnName="RESP" />
-                <ScalarProperty Name="ACTIONABLE" ColumnName="ACTIONABLE" />
-                <ScalarProperty Name="REVIEWDATE" ColumnName="REVIEWDATE" />
                 <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+                <ScalarProperty Name="REVIEWDATE" ColumnName="REVIEWDATE" />
+                <ScalarProperty Name="ACTIONABLE" ColumnName="ACTIONABLE" />
+                <ScalarProperty Name="RESP" ColumnName="RESP" />
+                <ScalarProperty Name="EXPECTEDCLOSURE" ColumnName="EXPECTEDCLOSURE" />
+                <ScalarProperty Name="STATUSREM" ColumnName="STATUSREM" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="KEY" ColumnName="KEY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
