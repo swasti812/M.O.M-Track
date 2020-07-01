@@ -87,7 +87,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link text-dark opt">
+                    <a href="/AMail.aspx" class="nav-link text-dark opt">
                         <img src="../img/add.png" class="ml-2 mr-2 my-auto" style="width: 16px; height: 16px" />
                         <!-- <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
     -->
@@ -103,7 +103,7 @@
                     </a>
                 </li>
                   <li class="nav-item">
-                    <a href="" class="nav-link text-dark opt">
+                    <a href="/Invitee.aspx" class="nav-link text-dark opt">
                         <img src="../img/students.png" class="ml-2 mr-2 my-auto" style="width: 16px" />
                         <!-- <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
     -->

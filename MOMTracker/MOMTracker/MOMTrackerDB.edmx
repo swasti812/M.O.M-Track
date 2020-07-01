@@ -41,6 +41,14 @@
           <Property Name="MEETINGID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="INVITEEID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="MAILTIMER">
+          <Key>
+            <PropertyRef Name="KEYID" />
+          </Key>
+          <Property Name="KEYID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DAYS" Type="number" Precision="38" Scale="0" />
+          <Property Name="TEXT" Type="varchar2" MaxLength="2000" />
+        </EntityType>
         <EntityType Name="MEETINGTABLE">
           <Key>
             <PropertyRef Name="MEETINGID" />
@@ -161,6 +169,7 @@
           <EntitySet Name="DEPARTMENTTABLE" EntityType="Self.DEPARTMENTTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="DETAILSTABLE" EntityType="Self.DETAILSTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="INVITEESTABLE" EntityType="Self.INVITEESTABLE" Schema="C##SWASTI" store:Type="Tables" />
+          <EntitySet Name="MAILTIMER" EntityType="Self.MAILTIMER" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="MEETINGTABLE" EntityType="Self.MEETINGTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="MEMBERTABLE" EntityType="Self.MEMBERTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" Schema="C##SWASTI" store:Type="Tables" />
@@ -351,6 +360,7 @@
             <End Role="DEPARTMENTTABLE" EntitySet="DEPARTMENTTABLE" />
             <End Role="MEMBERTABLE" EntitySet="MEMBERTABLE" />
           </AssociationSet>
+          <EntitySet Name="MAILTIMER" EntityType="Model.MAILTIMER" />
         </EntityContainer>
         <EntityType Name="MOMDETAILS">
           <Key>
@@ -391,6 +401,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MAILTIMER">
+          <Key>
+            <PropertyRef Name="KEYID" />
+          </Key>
+          <Property Name="KEYID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DAYS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TEXT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -481,6 +499,15 @@
                 <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
                 <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAILTIMER">
+            <EntityTypeMapping TypeName="Model.MAILTIMER">
+              <MappingFragment StoreEntitySet="MAILTIMER">
+                <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+                <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+                <ScalarProperty Name="KEYID" ColumnName="KEYID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

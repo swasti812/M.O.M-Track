@@ -27,7 +27,7 @@ namespace MOMTracker
                 var context = new MOMEntities();
                 // con.Open();
                 
-                var user = context.DETAILSTABLE.SingleOrDefault(x => x.EMAIL == uid /*&& x.PASSWORD==pass */);
+                var user = context.MEMBERTABLE.SingleOrDefault(x => x.EMAIL == uid && x.PASSWORD==pass );
                 if (user!=null)
                 {
                     Response.Redirect("/Home.aspx");

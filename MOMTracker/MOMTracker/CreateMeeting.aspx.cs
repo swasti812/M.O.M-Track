@@ -29,7 +29,7 @@ namespace MOMTracker
                 ChairpersonList.DataSource = origin;
                 
               
-                ChairpersonList.DataTextField = "NAMEANDDESCRIPTION" ;
+                ChairpersonList.DataTextField = "FullName" ;
 
 
                 ChairpersonList.DataValueField = "UNIQUEID";
@@ -37,7 +37,7 @@ namespace MOMTracker
 
                 var Invitees = context.DETAILSTABLE.ToList();
                 InviteeList.DataSource = Invitees;
-                InviteeList.DataTextField = "NAMEANDDESCRIPTION";
+                InviteeList.DataTextField = "FullName";
                 InviteeList.DataValueField = "UNIQUEID";
                 InviteeList.DataBind();
             }

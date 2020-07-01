@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="MOMTracker.Home" EnableEventValidation="false"  %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AMail.aspx.cs" Inherits="MOMTracker.AMail" %>
+
 
 <!doctype html>
 <html>
@@ -132,17 +133,30 @@
         <div class="row pt-5">
             <div class="col-lg-12">
                 <form runat="server" onload="Page_Load">
-                    
-                <asp:GridView ID="Meetlist" AutoGenerateColumns="false" class="bg-white" runat="server" Width="900px" BackColor="white" BorderWidth="0px" ForeColor="Black" CellPadding="10" GridLines="None" OnRowDataBound="Meetlist_RowDataBound"  OnSelectedIndexChanged="Meetlist_SelectedIndexChanged" OnLoad="Page_Load" SelectedRowStyle-BackColor="#cccccc"  > 
-                    
-                    <Columns >
-                    <asp:BoundField  HeaderText="Date" DataField="MEETINGDATE" DataFormatString="{0:MM/dd/yyyy}" />  
-                    <asp:BoundField HeaderText="Time" DataField="TIME" />  
-                    <asp:BoundField HeaderText="Title" DataField="TITLE" />
-                    <asp:BoundField DataField="MEETINGID" HeaderText="MEETINGIDID" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"  />
-                    
-                    </Columns>
-                </asp:GridView>
+                     <div class="form-group">
+                                    <asp:Label ID="Label2" runat="server" class="control label col-md-2" Text="ENTER NO OF DAYS FOR REM 1"></asp:Label> 
+                                    <div class="col-md-10">
+                                      
+                                         <asp:TextBox ID="TextBox1" runat="server" class="form-control"  width="300px" ></asp:TextBox> 
+                                    </div>
+                                </div>
+                     <div class="form-group">
+                                    <asp:Label ID="Label1" runat="server" class="control label col-md-2" Text="ENTER NO OF DAYS FOR REM 2"></asp:Label> 
+                                    <div class="col-md-10">
+                                      
+                                         <asp:TextBox ID="TextBox2" runat="server" class="form-control"  width="300px" ></asp:TextBox> 
+                                    </div>
+                                </div>
+                     <div class="row pt-5 ">
+                                <div class="col-lg-3 mx-auto">
+                                    <asp:Button ID="btn" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="btn_Click"  Text="Submit" />  
+
+                                   <%-- <input type="submit" value="Send" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" />@*<em class="font-weight-bold">Send mail</em></input>*@--%>
+
+                                </div>
+
+                            </div>
+              
                     </form>
                 
               

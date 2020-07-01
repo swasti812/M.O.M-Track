@@ -36,6 +36,14 @@
     <Property Name="MEETINGID" Type="number" Precision="38" Scale="0" Nullable="false" />
     <Property Name="INVITEEID" Type="number" Precision="38" Scale="0" Nullable="false" />
   </EntityType>
+  <EntityType Name="MAILTIMER">
+    <Key>
+      <PropertyRef Name="KEYID" />
+    </Key>
+    <Property Name="KEYID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DAYS" Type="number" Precision="38" Scale="0" />
+    <Property Name="TEXT" Type="varchar2" MaxLength="2000" />
+  </EntityType>
   <EntityType Name="MEETINGTABLE">
     <Key>
       <PropertyRef Name="MEETINGID" />
@@ -156,6 +164,7 @@
     <EntitySet Name="DEPARTMENTTABLE" EntityType="Self.DEPARTMENTTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="DETAILSTABLE" EntityType="Self.DETAILSTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="INVITEESTABLE" EntityType="Self.INVITEESTABLE" Schema="C##SWASTI" store:Type="Tables" />
+    <EntitySet Name="MAILTIMER" EntityType="Self.MAILTIMER" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="MEETINGTABLE" EntityType="Self.MEETINGTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="MEMBERTABLE" EntityType="Self.MEMBERTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" Schema="C##SWASTI" store:Type="Tables" />

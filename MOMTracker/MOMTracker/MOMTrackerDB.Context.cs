@@ -33,5 +33,6 @@ namespace MOMTracker
         public DbSet<ROLETABLE> ROLETABLE { get; set; }
         public DbSet<MOMDETAILS> MOMDETAILS { get; set; }
         public DbSet<MEMBERTABLE> MEMBERTABLE { get; set; }
+        public DbSet<MAILTIMER> MAILTIMER { get; set; }
     }
 }

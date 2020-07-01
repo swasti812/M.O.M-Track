@@ -31,5 +31,19 @@ namespace MOMTracker
         public virtual DEPARTMENTTABLE DEPARTMENTTABLE { get; set; }
         public virtual ICollection<MEETINGTABLE> MEETINGTABLE { get; set; }
         public virtual ROLETABLE ROLETABLE { get; set; }
+     
+            //public string FIRSTNAME { get; set; }
+       
+
+        public string FullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", FIRSTNAME, LASTNAME);
+            }
+        }
+
+    
+
     }
 }

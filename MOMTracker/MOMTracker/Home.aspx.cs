@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,10 +21,11 @@ namespace MOMTracker
 
 
             Meetlist.DataSource = list;
-           
-            Meetlist.DataBind();
-            //var X=  Meetlist.DataKeys;
 
+            Meetlist.DataBind();
+           
+
+            
         }
 
         protected void btn_Click(object sender, EventArgs e)

@@ -117,6 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AMail.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -138,6 +139,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Home.aspx" />
     <Content Include="Invitee.aspx" />
+    <Content Include="MOMDetails.aspx" />
+    <Content Include="MOMExpand.aspx" />
     <Content Include="MOMTrackerDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MOMTrackerDB.Context.cs</LastGenOutput>
@@ -196,6 +199,13 @@
     <Compile Include="AGENDATABLE.cs">
       <DependentUpon>MOMTrackerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="AMail.aspx.cs">
+      <DependentUpon>AMail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AMail.aspx.designer.cs">
+      <DependentUpon>AMail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CreateMeeting.aspx.cs">
@@ -245,14 +255,31 @@
     <Compile Include="INVITEESTABLE.cs">
       <DependentUpon>MOMTrackerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="MAILTIMER.cs">
+      <DependentUpon>MOMTrackerDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="MEETINGTABLE.cs">
       <DependentUpon>MOMTrackerDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MEMBERTABLE.cs">
       <DependentUpon>MOMTrackerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="MOMDetails.aspx.cs">
+      <DependentUpon>MOMDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MOMDetails.aspx.designer.cs">
+      <DependentUpon>MOMDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MOMDETAILS.cs">
       <DependentUpon>MOMTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MOMExpand.aspx.cs">
+      <DependentUpon>MOMExpand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MOMExpand.aspx.designer.cs">
+      <DependentUpon>MOMExpand.aspx</DependentUpon>
     </Compile>
     <Compile Include="MOMTrackerDB.Context.cs">
       <AutoGen>True</AutoGen>

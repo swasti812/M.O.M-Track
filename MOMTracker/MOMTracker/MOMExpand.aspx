@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="MOMTracker.Home" EnableEventValidation="false"  %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MOMExpand.aspx.cs" Inherits="MOMTracker.MOMExpand" %>
 
-<!doctype html>
+<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -34,9 +35,6 @@
     width: 100%;
   }
 }
-        .hiddencol{
-            visibility:hidden;
-        }
     </style>
     <script>
         $(function () {
@@ -49,7 +47,7 @@
 </head>
 
 <body>
-  <%--  <form runat="server">--%>
+    <form runat="server">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="sticky top-nav">
         <div class="media nav-item ml-1" style="width: 100px; "  >
             <img src="../img/LOGO2.png" style="height: 70px">
@@ -98,17 +96,18 @@
                 </li>
                 <li class="nav-item">
                     <a href="/MOMDetails.aspx" class="nav-link text-dark opt">
-                        <img src=class="ml-2 mr-2 my-auto" style="width: 16px" />
+                        <img src="../img/students.png" class="ml-2 mr-2 my-auto" style="width: 16px" />
                         <!-- <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
     -->
                        M.O.M Details
                     </a>
                 </li>
-                 <li class="nav-item">
+                  <li class="nav-item">
                     <a href="/Invitee.aspx" class="nav-link text-dark opt">
-                        <img src="../img/students.png"  class="ml-2 mr-2 my-auto" style="width: 16px" />
+                        <img src="../img/students.png" class="ml-2 mr-2 my-auto" style="width: 16px" />
                         <!-- <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-    -->                    Add Invitee
+    -->
+                      Add Invitee
                     </a>
                 </li>
               
@@ -125,33 +124,69 @@
 
 
     </div>
-    <div class="page-content active container-fluid" id="content">
-        <div class="row pt-5">
-
-        </div>
-        <div class="row pt-5">
-            <div class="col-lg-12">
-                <form runat="server" onload="Page_Load">
-                    
-                <asp:GridView ID="Meetlist" AutoGenerateColumns="false" class="bg-white" runat="server" Width="900px" BackColor="white" BorderWidth="0px" ForeColor="Black" CellPadding="10" GridLines="None" OnRowDataBound="Meetlist_RowDataBound"  OnSelectedIndexChanged="Meetlist_SelectedIndexChanged" OnLoad="Page_Load" SelectedRowStyle-BackColor="#cccccc"  > 
-                    
-                    <Columns >
-                    <asp:BoundField  HeaderText="Date" DataField="MEETINGDATE" DataFormatString="{0:MM/dd/yyyy}" />  
-                    <asp:BoundField HeaderText="Time" DataField="TIME" />  
-                    <asp:BoundField HeaderText="Title" DataField="TITLE" />
-                    <asp:BoundField DataField="MEETINGID" HeaderText="MEETINGIDID" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"  />
-                    
-                    </Columns>
-                </asp:GridView>
-                    </form>
-                
-              
-
-             
-            </div>
-        </div>
-
-    </div>
+    <div class="page-content active container mt-2" id="content">
         
+       
+            <div class="row pt-5">
+
+                <div class="col-lg-12">
+                    
+
+                        <%--@Html.AntiForgeryToken()--%>
+
+                        <div class="form-horizontal">
+                            <hr />
+                          
+
+
+                            <div class="form-group">
+                       
+                                <asp:Label ID="Label1" runat="server" class="control label col-md-2" ></asp:Label>  
+                                
+                            </div>
+
+                            <div class="form-group">
+                                    <asp:Label ID="Label2" runat="server" class="control label col-md-2" ></asp:Label> 
+                                   
+                                </div>
+                            <div class="form-group">
+                                 <asp:Label ID="Label3" runat="server" class="control label col-md-2"   ></asp:Label> 
+                               
+
+                           
+                            <div class="form-group">
+                                <asp:Label ID="Label4" runat="server" class="control label col-md-2"></asp:Label> 
+                                
+                            </div>
+                       
+                            
+                           <%-- <div class="form-group">
+                                <asp:Label ID="Label5" runat="server" class="control label col-md-2" ></asp:Label>
+                               
+                                </div>--%>
+
+                          
+                        </div>
+                            
+                            <div class="row pt-5 ">
+                                <div class="col-lg-3 mx-auto">
+                                
+                                    <asp:Button ID="btn" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="btn_Click" Text="PUBLISH TO ALL INVITEES" />  
+                                    <asp:Button ID="Button1" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="Button1_Click" Text="PUBLISH TO CP" />  
+                                   </div>
+
+                            </div>
+
+                         <%--   <div class="row pt-5 ">
+                                <div class="col-lg-3 mx-auto">
+                                    
+                                    <asp:Button ID="Button1" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="Button3_Click" Text="UPLOAD EXCEL FILE" />  
+
+                                   </div>
+
+
+
+    </div>--%>
+       </form>
 </body>
 </html>

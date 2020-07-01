@@ -88,5 +88,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="MAILTIMER">
+      <EntityTypeMapping TypeName="Model.MAILTIMER">
+        <MappingFragment StoreEntitySet="MAILTIMER">
+          <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+          <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+          <ScalarProperty Name="KEYID" ColumnName="KEYID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

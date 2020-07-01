@@ -157,6 +157,7 @@
       <End Role="DEPARTMENTTABLE" EntitySet="DEPARTMENTTABLE" />
       <End Role="MEMBERTABLE" EntitySet="MEMBERTABLE" />
     </AssociationSet>
+    <EntitySet Name="MAILTIMER" EntityType="Model.MAILTIMER" />
   </EntityContainer>
   <EntityType Name="MOMDETAILS">
     <Key>
@@ -197,4 +198,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="MAILTIMER">
+    <Key>
+      <PropertyRef Name="KEYID" />
+    </Key>
+    <Property Name="KEYID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DAYS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEXT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>
