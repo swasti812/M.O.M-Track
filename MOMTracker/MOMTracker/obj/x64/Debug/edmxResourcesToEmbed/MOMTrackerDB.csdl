@@ -151,26 +151,22 @@
       <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
       <End Role="INVITEESTABLE" EntitySet="INVITEESTABLE" />
     </AssociationSet>
-    <EntitySet Name="MOMDETAILS" EntityType="Model.MOMDETAILS" />
+    <EntitySet Name="MAILTIMER" EntityType="Model.MAILTIMER" />
     <EntitySet Name="MEMBERTABLE" EntityType="Model.MEMBERTABLE" />
     <AssociationSet Name="DEP" Association="Model.DEP">
       <End Role="DEPARTMENTTABLE" EntitySet="DEPARTMENTTABLE" />
       <End Role="MEMBERTABLE" EntitySet="MEMBERTABLE" />
     </AssociationSet>
-    <EntitySet Name="MAILTIMER" EntityType="Model.MAILTIMER" />
+    <EntitySet Name="MOMDETAILS" EntityType="Model.MOMDETAILS" />
+    <EntitySet Name="MEETDEP" EntityType="Model.MEETDEP" />
   </EntityContainer>
-  <EntityType Name="MOMDETAILS">
+  <EntityType Name="MAILTIMER">
     <Key>
-      <PropertyRef Name="KEY" />
+      <PropertyRef Name="KEYID" />
     </Key>
-    <Property Name="KEY" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="STATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="STATUSREM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="EXPECTEDCLOSURE" Type="DateTime" Nullable="false" />
-    <Property Name="RESP" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="ACTIONABLE" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="REVIEWDATE" Type="DateTime" Nullable="false" />
-    <Property Name="ITEM" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="KEYID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DAYS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TEXT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="MEMBERTABLE">
     <Key>
@@ -179,12 +175,12 @@
     <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FIRSTNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="LASTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="MOBILE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="TELEPHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="DEPARTMENT" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
-    <NavigationProperty Name="DEPARTMENTTABLE" Relationship="Model.DEP" FromRole="MEMBERTABLE" ToRole="DEPARTMENTTABLE" />
     <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DEPARTMENTTABLE" Relationship="Model.DEP" FromRole="MEMBERTABLE" ToRole="DEPARTMENTTABLE" />
   </EntityType>
   <Association Name="DEP">
     <End Type="Model.DEPARTMENTTABLE" Role="DEPARTMENTTABLE" Multiplicity="1" />
@@ -198,12 +194,28 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="MAILTIMER">
+  <EntityType Name="MOMDETAILS">
     <Key>
-      <PropertyRef Name="KEYID" />
+      <PropertyRef Name="KEY" />
     </Key>
-    <Property Name="KEYID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DAYS" Type="Decimal" Precision="38" Scale="0" />
-    <Property Name="TEXT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="KEY" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CURRENTSTAGE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="REMARKS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TARGET" Type="DateTime" Nullable="false" />
+    <Property Name="ITSPOC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TASKDESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="RESPONSIBILITY" Type="String" Nullable="false" />
+    <Property Name="ATR" Type="String" Nullable="true" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="MOMDETAILS1" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ACTIONPOINT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MEETDEP">
+    <Key>
+      <PropertyRef Name="KEY" />
+    </Key>
+    <Property Name="KEY" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MEETID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="DEPID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
   </EntityType>
 </Schema>

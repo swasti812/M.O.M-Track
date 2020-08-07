@@ -50,7 +50,7 @@
 </head>
 
 <body>
-  <%--  <form runat="server">--%>
+   <form runat="server">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="sticky top-nav">
         <div class="media nav-item ml-1" style="width: 100px; "  >
             <img src="../img/LOGO2.png" style="height: 70px">
@@ -65,7 +65,8 @@
         <a class="nav-link" href="#"	>Signout</a>-->
         </div>
         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active"><small class="text-uppercase font-weight-bold">menu</small></button>
-    </nav>
+   
+         <asp:Button id="Logout" runat="server"  class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active" Text="LOGOUT" OnClick="Logout_Click"/></nav>
    
         <div class="vertical-nav bg-white shadow-none" id="sidebar">
 
@@ -99,7 +100,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/MOMDetails.aspx" class="nav-link text-dark opt">
-                        <img src=class="ml-2 mr-2 my-auto" style="width: 16px" />
+                        <img src="../img/students.png" class="ml-2 mr-2 my-auto" style="width: 16px" />
                         <!-- <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
     -->
                        M.O.M Details
@@ -132,7 +133,7 @@
         </div>
         <div class="row pt-5">
             <div class="col-lg-12">
-                <form runat="server" onload="Page_Load">
+               <%-- <form runat="server" onload="Page_Load">--%>
                      <div class="form-group">
                                     <asp:Label ID="Label2" runat="server" class="control label col-md-2" Text="ENTER NO OF DAYS FOR REM 1"></asp:Label> 
                                     <div class="col-md-10">
@@ -157,8 +158,7 @@
 
                             </div>
               
-                    </form>
-                
+                    
               
 
              
@@ -166,6 +166,8 @@
         </div>
 
     </div>
+       </form>
+                
         
 </body>
 </html>

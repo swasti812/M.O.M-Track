@@ -14,6 +14,24 @@
 
     <script src="../files/jquery-3.4.1.min.js"></script>
     <script src="../files/bootstrap.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("InviteeList").mousedown(function (e) {
+                e.preventDefault();
+
+                var select = this;
+                var scroll = select.scrollTop;
+
+                e.target.selected = !e.target.selected;
+
+                setTimeout(function () { select.scrollTop = scroll; }, 0);
+
+                $(select).focus();
+            }).mousemove(function (e) { e.preventDefault() });
+        });
+    </script>
+ 
     
 
      <style>
@@ -61,7 +79,8 @@
         <a class="nav-link" href="#"	>Signout</a>-->
         </div>
         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active"><small class="text-uppercase font-weight-bold">menu</small></button>
-    </nav>
+    <asp:Button id="Logout" runat="server"  class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active" Text="LOGOUT" OnClick="Logout_Click"/>
+        </nav>
    
         <div class="vertical-nav bg-white shadow-none" id="sidebar">
 
@@ -142,7 +161,8 @@
                        
                                 <asp:Label ID="Label1" runat="server" class="control label col-md-2" Text="Meeting Date"></asp:Label>  
                                 <div class="col-md-10">
-                                    <asp:TextBox ID="TextBox" runat="server" class="form-control" placeholder="Date" Textmode="Date" width="150px"></asp:TextBox>  
+                                    <asp:TextBox ID="TextBox" runat="server" class="form-control" placeholder="Date" Textmode="Date" width="150px"></asp:TextBox> 
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Name cannot be blank" ControlToValidate="TextBox" ForeColor="Red"></asp:RequiredFieldValidator>  
                                  
                                 </div>
                             </div>
@@ -152,10 +172,12 @@
                                     <div class="col-md-10">
                                       
                                          <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Time" Textmode="Time" width="150px" ></asp:TextBox> 
+                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Name cannot be blank" ControlToValidate="TextBox1" ForeColor="Red"></asp:RequiredFieldValidator>  
                                     </div>
                                 </div>
                             <div class="form-group">
                                  <asp:Label ID="Label3" runat="server" class="control label col-md-2" Text="Chairperson"  ></asp:Label> 
+
                                 <div class="col-md-10">
                                     
                                
@@ -167,9 +189,10 @@
                             </div>
                              <div class="form-group">
                                 <asp:Label ID="Label6" runat="server" class="control label col-md-2" Text="Invitees"></asp:Label>
+                                 </div>
                                 <div class="col-md-10">
                                     <%--<asp:checkboxlist runat="server" ID="InviteeList" class="listbox" Width="300px" SelectionMode="Multiple" ></asp:checkboxlist>--%>
-                                   <asp:ListBox runat="server" ID="InviteeList" class="listbox" width="300px" SelectionMode="Multiple"> </asp:ListBox>
+                                   <asp:ListBox runat="server" ID="InviteeList"  width="300px" SelectionMode="Multiple"> </asp:ListBox>
                                     <%--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css"
               rel="stylesheet" type="text/css" >
@@ -190,6 +213,14 @@
          
                                     </div>
                                 </div>
+                     <div class="form-group">
+                                <asp:Label ID="Label7" runat="server" class="control label col-md-2" Text="Department"></asp:Label>
+                                 </div>
+                                <div class="col-md-10">
+                                    <%--<asp:checkboxlist runat="server" ID="InviteeList" class="listbox" Width="300px" SelectionMode="Multiple" ></asp:checkboxlist>--%>
+                                   <asp:ListBox runat="server" ID="ListBox1"  width="300px" SelectionMode="Multiple"> </asp:ListBox>
+                                    </div>
+                    
 
                            
                             <div class="form-group">
@@ -211,6 +242,7 @@
                                 <asp:Label ID="Label5" runat="server" class="control label col-md-2" Text="Title"></asp:Label>
                                 <div class="col-md-10">
                                     <asp:TextBox ID="TextBox3" runat="server" ></asp:TextBox>
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Name cannot be blank" ControlToValidate="TextBox3" ForeColor="Red"></asp:RequiredFieldValidator>  
                                     </div>
                                 </div>
 

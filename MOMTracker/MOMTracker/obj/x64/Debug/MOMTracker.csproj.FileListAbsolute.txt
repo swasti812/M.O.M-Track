@@ -76,3 +76,11 @@ C:\Users\HP\source\repos\MOMTracker\MOMTracker\obj\x64\Debug\MOMTracker.csproj.C
 C:\Users\HP\source\repos\MOMTracker\MOMTracker\obj\x64\Debug\MOMTracker.csproj.CopyComplete
 C:\Users\HP\source\repos\MOMTracker\MOMTracker\obj\x64\Debug\MOMTracker.dll
 C:\Users\HP\source\repos\MOMTracker\MOMTracker\obj\x64\Debug\MOMTracker.pdb
+C:\Users\HP\source\repos\MOMTracker\MOMTracker\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\HP\source\repos\MOMTracker\MOMTracker\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\HP\source\repos\MOMTracker\MOMTracker\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\HP\source\repos\MOMTracker\MOMTracker\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\HP\source\repos\MOMTracker\MOMTracker\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\HP\source\repos\MOMTracker\MOMTracker\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\HP\source\repos\MOMTracker\MOMTracker\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\HP\source\repos\MOMTracker\MOMTracker\bin\System.IdentityModel.Tokens.Jwt.xml

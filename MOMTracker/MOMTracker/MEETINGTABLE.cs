@@ -11,7 +11,8 @@ namespace MOMTracker
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MEETINGTABLE
     {
         public MEETINGTABLE()
@@ -21,9 +22,12 @@ namespace MOMTracker
         }
     
         public decimal MEETINGID { get; set; }
+        [Required]
         public System.DateTime MEETINGDATE { get; set; }
+        [Required]
         public string TIME { get; set; }
         public decimal CHAIRPERSON { get; set; }
+        [Required]
         public string TITLE { get; set; }
     
         public virtual ICollection<AGENDATABLE> AGENDATABLE { get; set; }

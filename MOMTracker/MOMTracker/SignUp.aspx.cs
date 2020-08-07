@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,14 +12,17 @@ namespace MOMTracker
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var context = new MOMEntities();
-            var list = context.DEPARTMENTTABLE.ToList();
-          
+            if (!IsPostBack)
+            {
+                var context = new MOMEntities();
+                var list = context.DEPARTMENTTABLE.ToList();
 
-            DepList.DataSource = list;
-            DepList.DataTextField = "DEPARTMENT";
-            DepList.DataValueField = "KEY";
-            DepList.DataBind();
+
+                Dep.DataSource = list;
+                Dep.DataTextField = "DEPARTMENT";
+                Dep.DataValueField = "KEY";
+                Dep.DataBind();
+            }
         }
 
         protected void btn_Click(object sender, EventArgs e)
@@ -30,7 +34,7 @@ namespace MOMTracker
                 var email = TextBox2.Text;
                 var mob = TextBox3.Text;
                 var tel = TextBox4.Text;
-                var dep = DepList.SelectedValue;
+                var dep = Dep.SelectedValue;
                 var password = TextBox5.Text;
                 var context = new MOMEntities();
                 MEMBERTABLE user = new MEMBERTABLE();
@@ -49,12 +53,29 @@ namespace MOMTracker
                     user.MOBILE = mob;
                     user.TELEPHONE = tel;
                     user.PASSWORD = password;
+                    user.ID = 0;
+                    var contextt = new ValidationContext(user);
+                    var results = new List<ValidationResult>();
+                    var isValid = Validator.TryValidateObject(user, contextt, results, true);
 
-                    user.DEPARTMENT = Convert.ToInt32(dep);
-                    context.MEMBERTABLE.Add(user);
-                    context.SaveChanges();
-                    Response.Redirect("Home.aspx");
-                }
+                    if (!isValid)
+                    {
+                        foreach (var validationResult in results)
+                        {
+                            //Response.Write(validationResult.ErrorMessage.ToString());
+                            //Response.Redirect("SignUp.aspx");
+
+                        }
+                    }
+                    else
+                    {
+                        user.DEPARTMENT = Convert.ToInt32(dep);
+                        context.MEMBERTABLE.Add(user);
+                        context.SaveChanges();
+                        Response.Redirect("Login.aspx");
+                    }
+                    }
+                
 
 }
             catch(Exception ex)

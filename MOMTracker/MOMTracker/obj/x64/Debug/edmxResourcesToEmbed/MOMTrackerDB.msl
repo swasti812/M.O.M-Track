@@ -60,17 +60,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MOMDETAILS">
-      <EntityTypeMapping TypeName="Model.MOMDETAILS">
-        <MappingFragment StoreEntitySet="MOMDETAILS">
-          <ScalarProperty Name="ITEM" ColumnName="ITEM" />
-          <ScalarProperty Name="REVIEWDATE" ColumnName="REVIEWDATE" />
-          <ScalarProperty Name="ACTIONABLE" ColumnName="ACTIONABLE" />
-          <ScalarProperty Name="RESP" ColumnName="RESP" />
-          <ScalarProperty Name="EXPECTEDCLOSURE" ColumnName="EXPECTEDCLOSURE" />
-          <ScalarProperty Name="STATUSREM" ColumnName="STATUSREM" />
-          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-          <ScalarProperty Name="KEY" ColumnName="KEY" />
+    <EntitySetMapping Name="MAILTIMER">
+      <EntityTypeMapping TypeName="Model.MAILTIMER">
+        <MappingFragment StoreEntitySet="MAILTIMER">
+          <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+          <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+          <ScalarProperty Name="KEYID" ColumnName="KEYID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -88,12 +83,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MAILTIMER">
-      <EntityTypeMapping TypeName="Model.MAILTIMER">
-        <MappingFragment StoreEntitySet="MAILTIMER">
-          <ScalarProperty Name="TEXT" ColumnName="TEXT" />
-          <ScalarProperty Name="DAYS" ColumnName="DAYS" />
-          <ScalarProperty Name="KEYID" ColumnName="KEYID" />
+    <EntitySetMapping Name="MOMDETAILS">
+      <EntityTypeMapping TypeName="Model.MOMDETAILS">
+        <MappingFragment StoreEntitySet="MOMDETAILS">
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ACTIONPOINT" ColumnName="ACTIONPOINT" />
+          <ScalarProperty Name="MOMDETAILS1" ColumnName="MOMDETAILS" />
+          <ScalarProperty Name="ATR" ColumnName="ATR" />
+          <ScalarProperty Name="RESPONSIBILITY" ColumnName="RESPONSIBILITY" />
+          <ScalarProperty Name="TASKDESCRIPTION" ColumnName="TASKDESCRIPTION" />
+          <ScalarProperty Name="ITSPOC" ColumnName="ITSPOC" />
+          <ScalarProperty Name="TARGET" ColumnName="TARGET" />
+          <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+          <ScalarProperty Name="CURRENTSTAGE" ColumnName="CURRENTSTAGE" />
+          <ScalarProperty Name="KEY" ColumnName="KEY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEETDEP">
+      <EntityTypeMapping TypeName="Model.MEETDEP">
+        <MappingFragment StoreEntitySet="MEETDEP">
+          <ScalarProperty Name="DEPID" ColumnName="DEPID" />
+          <ScalarProperty Name="MEETID" ColumnName="MEETID" />
+          <ScalarProperty Name="KEY" ColumnName="KEY" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

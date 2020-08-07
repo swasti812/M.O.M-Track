@@ -11,16 +11,22 @@ namespace MOMTracker
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MEMBERTABLE
     {
+       
         public decimal ID { get; set; }
+        [Required]
         public string FIRSTNAME { get; set; }
         public string LASTNAME { get; set; }
+
+        [Required]
         public string EMAIL { get; set; }
         public string MOBILE { get; set; }
         public string TELEPHONE { get; set; }
         public decimal DEPARTMENT { get; set; }
+        [Required]
         public string PASSWORD { get; set; }
     
         public virtual DEPARTMENTTABLE DEPARTMENTTABLE { get; set; }

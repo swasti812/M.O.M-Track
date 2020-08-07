@@ -15,12 +15,15 @@ namespace MOMTracker
     public partial class MOMDETAILS
     {
         public decimal KEY { get; set; }
-        public string STATUS { get; set; }
-        public string STATUSREM { get; set; }
-        public System.DateTime EXPECTEDCLOSURE { get; set; }
-        public string RESP { get; set; }
-        public string ACTIONABLE { get; set; }
-        public System.DateTime REVIEWDATE { get; set; }
-        public string ITEM { get; set; }
+        public string CURRENTSTAGE { get; set; }
+        public string REMARKS { get; set; }
+        public System.DateTime TARGET { get; set; }
+        public string ITSPOC { get; set; }
+        public string TASKDESCRIPTION { get; set; }
+        public string RESPONSIBILITY { get; set; }
+        public string ATR { get; set; }
+        public Nullable<decimal> MOMDETAILS1 { get; set; }
+        public string ACTIONPOINT { get; set; }
+        public string EMAIL { get; set; }
     }
 }

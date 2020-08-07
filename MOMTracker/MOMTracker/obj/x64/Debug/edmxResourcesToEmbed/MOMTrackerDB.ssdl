@@ -41,8 +41,16 @@
       <PropertyRef Name="KEYID" />
     </Key>
     <Property Name="KEYID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DAYS" Type="number" Precision="38" Scale="0" />
+    <Property Name="DAYS" Type="number" Precision="38" Scale="0" Nullable="false" />
     <Property Name="TEXT" Type="varchar2" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="MEETDEP">
+    <Key>
+      <PropertyRef Name="KEY" />
+    </Key>
+    <Property Name="KEY" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MEETID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPID" Type="number" Precision="38" Scale="0" Nullable="false" />
   </EntityType>
   <EntityType Name="MEETINGTABLE">
     <Key>
@@ -61,7 +69,7 @@
     <Property Name="ID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FIRSTNAME" Type="varchar2" MaxLength="50" Nullable="false" />
     <Property Name="LASTNAME" Type="varchar2" MaxLength="20" />
-    <Property Name="EMAIL" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="50" Nullable="false" />
     <Property Name="MOBILE" Type="varchar2" MaxLength="20" />
     <Property Name="TELEPHONE" Type="varchar2" MaxLength="20" />
     <Property Name="DEPARTMENT" Type="number" Precision="38" Scale="0" Nullable="false" />
@@ -72,13 +80,16 @@
       <PropertyRef Name="KEY" />
     </Key>
     <Property Name="KEY" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="STATUS" Type="varchar2" MaxLength="500" />
-    <Property Name="STATUSREM" Type="varchar2" MaxLength="500" />
-    <Property Name="EXPECTEDCLOSURE" Type="date" Nullable="false" />
-    <Property Name="RESP" Type="long" Nullable="false" />
-    <Property Name="ACTIONABLE" Type="varchar2" MaxLength="500" Nullable="false" />
-    <Property Name="REVIEWDATE" Type="date" Nullable="false" />
-    <Property Name="ITEM" Type="varchar2" MaxLength="500" Nullable="false" />
+    <Property Name="CURRENTSTAGE" Type="varchar2" MaxLength="500" />
+    <Property Name="REMARKS" Type="varchar2" MaxLength="500" />
+    <Property Name="TARGET" Type="date" Nullable="false" />
+    <Property Name="ITSPOC" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="TASKDESCRIPTION" Type="varchar2" MaxLength="500" />
+    <Property Name="RESPONSIBILITY" Type="nvarchar2" MaxLength="200" Nullable="false" />
+    <Property Name="ATR" Type="varchar2" MaxLength="500" />
+    <Property Name="MOMDETAILS" Type="number" Precision="38" Scale="0" />
+    <Property Name="ACTIONPOINT" Type="varchar2" MaxLength="200" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="ROLETABLE">
     <Key>
@@ -165,6 +176,7 @@
     <EntitySet Name="DETAILSTABLE" EntityType="Self.DETAILSTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="INVITEESTABLE" EntityType="Self.INVITEESTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="MAILTIMER" EntityType="Self.MAILTIMER" Schema="C##SWASTI" store:Type="Tables" />
+    <EntitySet Name="MEETDEP" EntityType="Self.MEETDEP" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="MEETINGTABLE" EntityType="Self.MEETINGTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="MEMBERTABLE" EntityType="Self.MEMBERTABLE" Schema="C##SWASTI" store:Type="Tables" />
     <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" Schema="C##SWASTI" store:Type="Tables" />

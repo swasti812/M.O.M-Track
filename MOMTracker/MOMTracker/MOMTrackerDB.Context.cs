@@ -31,8 +31,9 @@ namespace MOMTracker
         public DbSet<INVITEESTABLE> INVITEESTABLE { get; set; }
         public DbSet<MEETINGTABLE> MEETINGTABLE { get; set; }
         public DbSet<ROLETABLE> ROLETABLE { get; set; }
-        public DbSet<MOMDETAILS> MOMDETAILS { get; set; }
-        public DbSet<MEMBERTABLE> MEMBERTABLE { get; set; }
         public DbSet<MAILTIMER> MAILTIMER { get; set; }
+        public DbSet<MEMBERTABLE> MEMBERTABLE { get; set; }
+        public DbSet<MOMDETAILS> MOMDETAILS { get; set; }
+        public DbSet<MEETDEP> MEETDEP { get; set; }
     }
 }

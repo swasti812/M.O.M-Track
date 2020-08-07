@@ -46,8 +46,16 @@
             <PropertyRef Name="KEYID" />
           </Key>
           <Property Name="KEYID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DAYS" Type="number" Precision="38" Scale="0" />
+          <Property Name="DAYS" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TEXT" Type="varchar2" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="MEETDEP">
+          <Key>
+            <PropertyRef Name="KEY" />
+          </Key>
+          <Property Name="KEY" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEETID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DEPID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="MEETINGTABLE">
           <Key>
@@ -66,7 +74,7 @@
           <Property Name="ID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FIRSTNAME" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="LASTNAME" Type="varchar2" MaxLength="20" />
-          <Property Name="EMAIL" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="MOBILE" Type="varchar2" MaxLength="20" />
           <Property Name="TELEPHONE" Type="varchar2" MaxLength="20" />
           <Property Name="DEPARTMENT" Type="number" Precision="38" Scale="0" Nullable="false" />
@@ -77,13 +85,16 @@
             <PropertyRef Name="KEY" />
           </Key>
           <Property Name="KEY" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="STATUS" Type="varchar2" MaxLength="500" />
-          <Property Name="STATUSREM" Type="varchar2" MaxLength="500" />
-          <Property Name="EXPECTEDCLOSURE" Type="date" Nullable="false" />
-          <Property Name="RESP" Type="long" Nullable="false" />
-          <Property Name="ACTIONABLE" Type="varchar2" MaxLength="500" Nullable="false" />
-          <Property Name="REVIEWDATE" Type="date" Nullable="false" />
-          <Property Name="ITEM" Type="varchar2" MaxLength="500" Nullable="false" />
+          <Property Name="CURRENTSTAGE" Type="varchar2" MaxLength="500" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="500" />
+          <Property Name="TARGET" Type="date" Nullable="false" />
+          <Property Name="ITSPOC" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TASKDESCRIPTION" Type="varchar2" MaxLength="500" />
+          <Property Name="RESPONSIBILITY" Type="nvarchar2" MaxLength="200" Nullable="false" />
+          <Property Name="ATR" Type="varchar2" MaxLength="500" />
+          <Property Name="MOMDETAILS" Type="number" Precision="38" Scale="0" />
+          <Property Name="ACTIONPOINT" Type="varchar2" MaxLength="200" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ROLETABLE">
           <Key>
@@ -170,6 +181,7 @@
           <EntitySet Name="DETAILSTABLE" EntityType="Self.DETAILSTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="INVITEESTABLE" EntityType="Self.INVITEESTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="MAILTIMER" EntityType="Self.MAILTIMER" Schema="C##SWASTI" store:Type="Tables" />
+          <EntitySet Name="MEETDEP" EntityType="Self.MEETDEP" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="MEETINGTABLE" EntityType="Self.MEETINGTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="MEMBERTABLE" EntityType="Self.MEMBERTABLE" Schema="C##SWASTI" store:Type="Tables" />
           <EntitySet Name="MOMDETAILS" EntityType="Self.MOMDETAILS" Schema="C##SWASTI" store:Type="Tables" />
@@ -354,26 +366,22 @@
             <End Role="MEETINGTABLE" EntitySet="MEETINGTABLE" />
             <End Role="INVITEESTABLE" EntitySet="INVITEESTABLE" />
           </AssociationSet>
-          <EntitySet Name="MOMDETAILS" EntityType="Model.MOMDETAILS" />
+          <EntitySet Name="MAILTIMER" EntityType="Model.MAILTIMER" />
           <EntitySet Name="MEMBERTABLE" EntityType="Model.MEMBERTABLE" />
           <AssociationSet Name="DEP" Association="Model.DEP">
             <End Role="DEPARTMENTTABLE" EntitySet="DEPARTMENTTABLE" />
             <End Role="MEMBERTABLE" EntitySet="MEMBERTABLE" />
           </AssociationSet>
-          <EntitySet Name="MAILTIMER" EntityType="Model.MAILTIMER" />
+          <EntitySet Name="MOMDETAILS" EntityType="Model.MOMDETAILS" />
+          <EntitySet Name="MEETDEP" EntityType="Model.MEETDEP" />
         </EntityContainer>
-        <EntityType Name="MOMDETAILS">
+        <EntityType Name="MAILTIMER">
           <Key>
-            <PropertyRef Name="KEY" />
+            <PropertyRef Name="KEYID" />
           </Key>
-          <Property Name="KEY" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="STATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="STATUSREM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="EXPECTEDCLOSURE" Type="DateTime" Nullable="false" />
-          <Property Name="RESP" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ACTIONABLE" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="REVIEWDATE" Type="DateTime" Nullable="false" />
-          <Property Name="ITEM" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="KEYID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DAYS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TEXT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MEMBERTABLE">
           <Key>
@@ -382,12 +390,12 @@
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIRSTNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LASTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MOBILE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="TELEPHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="DEPARTMENT" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
-          <NavigationProperty Name="DEPARTMENTTABLE" Relationship="Model.DEP" FromRole="MEMBERTABLE" ToRole="DEPARTMENTTABLE" />
           <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DEPARTMENTTABLE" Relationship="Model.DEP" FromRole="MEMBERTABLE" ToRole="DEPARTMENTTABLE" />
         </EntityType>
         <Association Name="DEP">
           <End Type="Model.DEPARTMENTTABLE" Role="DEPARTMENTTABLE" Multiplicity="1" />
@@ -401,13 +409,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MAILTIMER">
+        <EntityType Name="MOMDETAILS">
           <Key>
-            <PropertyRef Name="KEYID" />
+            <PropertyRef Name="KEY" />
           </Key>
-          <Property Name="KEYID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DAYS" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="TEXT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="KEY" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CURRENTSTAGE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TARGET" Type="DateTime" Nullable="false" />
+          <Property Name="ITSPOC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TASKDESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RESPONSIBILITY" Type="String" Nullable="false" />
+          <Property Name="ATR" Type="String" Nullable="true" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MOMDETAILS1" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ACTIONPOINT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MEETDEP">
+          <Key>
+            <PropertyRef Name="KEY" />
+          </Key>
+          <Property Name="KEY" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEETID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DEPID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -474,17 +498,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MOMDETAILS">
-            <EntityTypeMapping TypeName="Model.MOMDETAILS">
-              <MappingFragment StoreEntitySet="MOMDETAILS">
-                <ScalarProperty Name="ITEM" ColumnName="ITEM" />
-                <ScalarProperty Name="REVIEWDATE" ColumnName="REVIEWDATE" />
-                <ScalarProperty Name="ACTIONABLE" ColumnName="ACTIONABLE" />
-                <ScalarProperty Name="RESP" ColumnName="RESP" />
-                <ScalarProperty Name="EXPECTEDCLOSURE" ColumnName="EXPECTEDCLOSURE" />
-                <ScalarProperty Name="STATUSREM" ColumnName="STATUSREM" />
-                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-                <ScalarProperty Name="KEY" ColumnName="KEY" />
+          <EntitySetMapping Name="MAILTIMER">
+            <EntityTypeMapping TypeName="Model.MAILTIMER">
+              <MappingFragment StoreEntitySet="MAILTIMER">
+                <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+                <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+                <ScalarProperty Name="KEYID" ColumnName="KEYID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -502,12 +521,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MAILTIMER">
-            <EntityTypeMapping TypeName="Model.MAILTIMER">
-              <MappingFragment StoreEntitySet="MAILTIMER">
-                <ScalarProperty Name="TEXT" ColumnName="TEXT" />
-                <ScalarProperty Name="DAYS" ColumnName="DAYS" />
-                <ScalarProperty Name="KEYID" ColumnName="KEYID" />
+          <EntitySetMapping Name="MOMDETAILS">
+            <EntityTypeMapping TypeName="Model.MOMDETAILS">
+              <MappingFragment StoreEntitySet="MOMDETAILS">
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ACTIONPOINT" ColumnName="ACTIONPOINT" />
+                <ScalarProperty Name="MOMDETAILS1" ColumnName="MOMDETAILS" />
+                <ScalarProperty Name="ATR" ColumnName="ATR" />
+                <ScalarProperty Name="RESPONSIBILITY" ColumnName="RESPONSIBILITY" />
+                <ScalarProperty Name="TASKDESCRIPTION" ColumnName="TASKDESCRIPTION" />
+                <ScalarProperty Name="ITSPOC" ColumnName="ITSPOC" />
+                <ScalarProperty Name="TARGET" ColumnName="TARGET" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="CURRENTSTAGE" ColumnName="CURRENTSTAGE" />
+                <ScalarProperty Name="KEY" ColumnName="KEY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEETDEP">
+            <EntityTypeMapping TypeName="Model.MEETDEP">
+              <MappingFragment StoreEntitySet="MEETDEP">
+                <ScalarProperty Name="DEPID" ColumnName="DEPID" />
+                <ScalarProperty Name="MEETID" ColumnName="MEETID" />
+                <ScalarProperty Name="KEY" ColumnName="KEY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

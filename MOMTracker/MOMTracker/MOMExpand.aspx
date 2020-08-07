@@ -62,7 +62,8 @@
         <a class="nav-link" href="#"	>Signout</a>-->
         </div>
         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active"><small class="text-uppercase font-weight-bold">menu</small></button>
-    </nav>
+        <asp:Button id="Logout" runat="server"  class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active" Text="LOGOUT" OnClick="Logout_Click"/>
+        </nav>
    
         <div class="vertical-nav bg-white shadow-none" id="sidebar">
 
@@ -171,8 +172,8 @@
                             <div class="row pt-5 ">
                                 <div class="col-lg-3 mx-auto">
                                 
-                                    <asp:Button ID="btn" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="btn_Click" Text="PUBLISH TO ALL INVITEES" />  
-                                    <asp:Button ID="Button1" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="Button1_Click" Text="PUBLISH TO CP" />  
+                                    <asp:Button ID="btn" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="btn_Click1" Text="PUBLISH TO CHAIRPERSON" />  
+                                    <asp:Button ID="Button1" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="Button1_Click" Text="PUBLISH TO ALL INVITEES" />  
                                    </div>
 
                             </div>

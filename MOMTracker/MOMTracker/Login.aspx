@@ -48,6 +48,7 @@
                        
                         <div class="col-sm-10">
                            <asp:TextBox ID="TextBox" runat="server" class="form-control" placeholder="Email" Textmode="Email" ></asp:TextBox>  
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Email cannot be blank" ControlToValidate="TextBox" ForeColor="Red"></asp:RequiredFieldValidator>  
                         </div>
                     </div>
                     <div class="form-group row">
@@ -57,13 +58,14 @@
                         <div class="col-sm-10">
                           
                             <asp:TextBox ID="TextBox2" runat="server" class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox> 
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Password cannot be blank" ControlToValidate="TextBox2" ForeColor="Red"></asp:RequiredFieldValidator>  
                              
                         </div>
                     </div>
                    
                     <div class="form-group row">
                         <div class="col-lg-12"> 
-                            <h6>Forgot Password?</h6>
+                            <h6>Don't have an account? </h6>  <a href="/SignUp.aspx" > SignUp </a>
                         </div>
                     </div>
                     <div class="form-group row">

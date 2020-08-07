@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,7 +13,21 @@ namespace MOMTracker
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
+            if (!this.IsPostBack)
+            {
+                var token = Session["TOKEN"] as string;
+                var user = TokenManager.Identifytoken(token);
+                if (user != null)
+                {
+                    //this.BindGrid();
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+
+                }
+            }
+            }
 
         protected void btn_Click(object sender, EventArgs e)
         {
@@ -39,6 +54,14 @@ namespace MOMTracker
             }
 
             
+        }
+
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Request.Cookies.Clear();
+            FormsAuthentication.SignOut();
+            Response.Redirect("/Login.aspx", true);
         }
     }
 }

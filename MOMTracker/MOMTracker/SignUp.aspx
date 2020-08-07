@@ -42,18 +42,20 @@
 
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="signup"><b>SIGN UP</b></div>
+                        <div class="signup" style="padding-top:3px"><b>SIGN UP</b></div>
                     </div>
 
                    <%-- @Html.ValidationSummary(true, "", new { @class = "text-danger" })--%>
 
                     
-                    <div class="form-group row" style="padding-top:175px">
+                    <div class="form-group row" style="padding-top:120px">
                          <asp:Label ID="Label1" runat="server" class="col-sm-5 col-form-label" Text="First Name"></asp:Label>  
                       
                        
                         <div class="col-sm-7">
                            <asp:TextBox ID="TextBox1" runat="server" class="form-control" ></asp:TextBox> 
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Name cannot be blank" ControlToValidate="TextBox1" ForeColor="Red"></asp:RequiredFieldValidator>  
+                          
                         
                            
                         </div>
@@ -73,6 +75,7 @@
                        <asp:Label ID="Label2" runat="server" class="col-sm-5 col-form-label" Text="Email" ></asp:Label>  
                         <div class="col-sm-7">
                              <asp:TextBox ID="TextBox2" runat="server" class="form-control" Textmode="Email" ></asp:TextBox> 
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Email cannot be blank" ControlToValidate="TextBox2" ForeColor="Red"></asp:RequiredFieldValidator>  
                           
                         </div>
                     </div>
@@ -91,14 +94,16 @@
 
                     <div class="form-group row">
                         <asp:Label ID="Label4" runat="server" class="col-sm-5 col-form-label" Text="Department" ></asp:Label>  
-                       <asp:dropdownlist ID="DepList" runat="server" CssClass="dropdown form control" >
-                         <asp:ListItem Text="----SELECT----" Value="0"></asp:ListItem>
+                       <asp:dropdownlist ID="Dep" runat="server" CssClass="dropdown form control" >
+                        
                         </asp:dropdownlist>  
                     </div>
                     <div class="form-group row">
                         <asp:Label ID="Label5" runat="server" class="col-sm-5 col-form-label" Text="Password"></asp:Label>
                         <div class="col-sm-7">
                              <asp:TextBox ID="TextBox5" runat="server" class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox> 
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Name cannot be blank" ControlToValidate="TextBox5" ForeColor="Red"></asp:RequiredFieldValidator>  
+                          
                         </div>
 
                     </div>
@@ -114,19 +119,10 @@
                     <div class="form-group row">
                         <h6 >Already had an Account ? Click here to <a href="Login.aspx">Login</a></h6>
                     </div>
-                   <%-- @*<div class="form-group row">
-            <div class="col-sm-12">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        By signing up, I agree to the Terms and Conditions.
-                    </label>
-                </div>
-            </div>
-        </div>*@--%>
-                    <div class="form-group row">
-                        <div class="col-sm-12" >
-                           <asp:Button ID="btn" runat="server" BorderStyle="None" Font-Size="X-Large" OnClick="btn_Click" Text="Sign Up" />  
+                
+                    <div class="form-group row" >
+                        <div class="col-sm-12"  >
+                           <asp:Button ID="btn" runat="server" style="padding-top:-3px" BorderStyle="None" Font-Size="X-Large" OnClick="btn_Click" Text="Sign Up" />  
                         </div>
                     </div>
                    

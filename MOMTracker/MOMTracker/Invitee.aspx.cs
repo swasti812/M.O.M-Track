@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,18 +12,34 @@ namespace MOMTracker
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var context = new MOMEntities();
-            var list = context.DEPARTMENTTABLE.ToList();
-            var list1 = context.ROLETABLE.ToList();
-            Rolelist.DataSource = list1;
-            Rolelist.DataTextField = "ROLE";
-            Rolelist.DataValueField = "ROLEID";
-            Rolelist.DataBind();
 
-            DepList.DataSource = list;
-            DepList.DataTextField = "DEPARTMENT";
-            DepList.DataValueField = "KEY";
-            DepList.DataBind();
+            if (!this.IsPostBack)
+            {
+                var token = Session["TOKEN"] as string;
+                var user = TokenManager.Identifytoken(token);
+                if (user != null)
+                {
+                    var context = new MOMEntities();
+                    //this.BindGrid();  var context = new MOMEntities();
+                    var list = context.DEPARTMENTTABLE.ToList();
+                    var list1 = context.ROLETABLE.ToList();
+                    Rolelist.DataSource = list1;
+                    Rolelist.DataTextField = "ROLE";
+                    Rolelist.DataValueField = "ROLEID";
+                    Rolelist.DataBind();
+
+                    DepList.DataSource = list;
+                    DepList.DataTextField = "DEPARTMENT";
+                    DepList.DataValueField = "KEY";
+                    DepList.DataBind();
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+
+                }
+            }
+          
 
 
 
@@ -62,6 +79,14 @@ namespace MOMTracker
                 Response.Write(ex);
             }
 
+        }
+
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Request.Cookies.Clear();
+            FormsAuthentication.SignOut();
+            Response.Redirect("/Login.aspx", true);
         }
     }
 }

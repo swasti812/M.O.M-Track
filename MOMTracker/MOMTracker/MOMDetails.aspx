@@ -51,7 +51,7 @@
 </head>
 
 <body>
-  <%--  <form runat="server">--%>
+   <form runat="server">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="sticky top-nav">
         <div class="media nav-item ml-1" style="width: 100px; "  >
             <img src="../img/LOGO2.png" style="height: 70px">
@@ -66,7 +66,8 @@
         <a class="nav-link" href="#"	>Signout</a>-->
         </div>
         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active"><small class="text-uppercase font-weight-bold">menu</small></button>
-    </nav>
+    <asp:Button id="Logout" runat="server"  class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active" Text="LOGOUT" OnClick="Logout_Click"/>
+        </nav>
    
         <div class="vertical-nav bg-white shadow-none" id="sidebar">
 
@@ -100,7 +101,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/MOMDetails.aspx" class="nav-link text-dark opt">
-                        <img src=class="ml-2 mr-2 my-auto" style="width: 16px" />
+                        <img src="../img/students.png" class="ml-2 mr-2 my-auto" style="width: 16px" />
                         <!-- <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
     -->
                        M.O.M Details
@@ -133,19 +134,51 @@
         </div>
         <div class="row pt-5">
             <div class="col-lg-12">
-                <form runat="server" onload="Page_Load">
+              
                     
-                <asp:GridView ID="Meetlist" AutoGenerateColumns="false" class="bg-white" runat="server" Width="900px" BackColor="white" BorderWidth="0px" ForeColor="Black" OnRowDataBound="Meetlist_RowDataBound"  OnSelectedIndexChanged="Meetlist_SelectedIndexChanged" CellPadding="10" GridLines="None"  OnLoad="Page_Load" SelectedRowStyle-BackColor="#cccccc"  > 
+        <asp:GridView ID="Meet" AutoGenerateColumns="false" class="bg-white" DataKeyNames="KEY"  runat="server" Width="900px" BackColor="white" BorderWidth="0px"  ForeColor="Black" CellPadding="10" GridLines="Both"  SelectedRowStyle-BackColor="#cccccc" AllowPaging="true"  OnPageIndexChanging="OnPageIndexChanging" PageSize="5" PagerStyle-BackColor="White" PagerStyle-Font-Bold="false"  PagerStyle-HorizontalAlign="Center" PagerStyle-VerticalAlign="Bottom" HeaderStyle-ForeColor="#000099">  <%--OnRowUpdating="MOMList_RowUpdating" OnRowCancelingEdit="MOMList_RowCancelingEdit"--%>   <%-- OnRowEditing="MOMList_RowEditing"--%> 
                     
                     <Columns >
-                    <asp:BoundField  HeaderText="Actionable" DataField="ACTIONABLE" />  
-                    <asp:BoundField HeaderText="Item" DataField="ITEM" />  
-                    <asp:BoundField HeaderText="Expected Closure" DataField="EXPECTEDCLOSURE" DataFormatString="{0:MM/dd/yyyy}"/>
-                    <asp:BoundField DataField="KEY" HeaderText="KEY" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"  />
-                    
+                    <asp:BoundField  HeaderText="CURRENTSTATUS" DataField="CURRENTSTAGE" ReadOnly="true"  />  
+                    <asp:BoundField HeaderText="TARGET" DataField="TARGET"  DataFormatString="{0:MM/dd/yyyy}" ReadOnly="true"/>  
+                    <asp:BoundField HeaderText="ITSPOC" DataField="ITSPOC" ReadOnly="true" />
+                         <asp:BoundField HeaderText="TASK" DataField="TASKDESCRIPTION" ReadOnly="true" />
+                         <asp:BoundField HeaderText="RESP" DataField="RESPONSIBILITY" ReadOnly="true" />
+                         <asp:BoundField HeaderText="ACTION POINT" DataField="ACTIONPOINT" ReadOnly="true"/>
+                       
+                        <asp:BoundField HeaderText="REMARKS" DataField="REMARKS" />
+                        
+                   
+                         <asp:TemplateField HeaderText="ATR" SortExpression="ATR">
+                            <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("ATR") %>'></asp:Label>
+                                </ItemTemplate>
+                        <%--<asp:BoundField HeaderText="ATR" DataField="ATR" />--%>
+                        <EditItemTemplate>
+                    <asp:DropDownList ID="DD2" runat="server" >
+                        <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
+                        <asp:ListItem Text="Processing" Value="Processing"></asp:ListItem>
+                        <asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
+                    </asp:DropDownList>
+                        
+
+                </EditItemTemplate>
+                            </asp:TemplateField>
+                         <asp:BoundField DataField="KEY" HeaderText="KEY" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" Visible="false"   />
+                    <%--<asp:CommandField ShowEditButton="true" ButtonType="Button" EditText="Edit" UpdateText="Update" CancelText="Cancel" />--%>
                     </Columns>
                 </asp:GridView>
-                    </form>
+
+                   <%--  <div class="row pt-5 ">
+                                <div class="col-lg-3 mx-auto">
+                                
+                                    <asp:Button ID="btn" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="btn_Click" Text="PUBLISH TO CHAIRPERSON" />  
+                                    <asp:Button ID="Button1" runat="server" class="btn btn-light bg-white rounded-pill shadow-sm px-4 nav-item active mb-4 ml-5" OnClick="Button1_Click" Text="PUBLISH TO ALL INVITEES" />  
+                                   </div>
+
+                            </div>--%>
+
+                   
                 
               
 
@@ -154,6 +187,6 @@
         </div>
 
     </div>
-        
+         </form>
 </body>
 </html>
